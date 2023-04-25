@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Execl转化为word | Modest&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="将带有表格excel转化为word（可以带有图片）">
+<meta name="author" content="Modest">
+<link rel="canonical" href="https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://modesty258.github.io/img/Q.gif">
+<link rel="apple-touch-icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="mask-icon" href="https://modesty258.github.io/img/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script defer src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Execl转化为word" />
+<meta property="og:description" content="将带有表格excel转化为word（可以带有图片）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-24T22:33:40+08:00" />
+<meta property="article:modified_time" content="2023-04-24T22:33:40+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Execl转化为word"/>
+<meta name="twitter:description" content="将带有表格excel转化为word（可以带有图片）"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://modesty258.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻 python",
+          "item": "https://modesty258.github.io/posts/tech/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Execl转化为word",
+      "item": "https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Execl转化为word",
+  "name": "Execl转化为word",
+  "description": "将带有表格excel转化为word（可以带有图片）",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "import os import xlrd import datetime import time from mailmerge import MailMerge from xlrd import xldate_as_datetime, xldate_as_tuple from docx import Document from docx.shared import Inches from docx.oxml.ns import qn from docx.enum.text import WD_ALIGN_PARAGRAPH def center_insert_img(doc, img1, img2): \"\"\"插入图片\"\"\" tables = doc.tables tab_2 = tables[0].rows[65].cells[30] ph_img2 = tab_2.paragraphs[0] run_img2 = ph_img2.add_run('') run_img2.add_picture(img2) tab_1 = tables[0].rows[65].cells[6] ph_img1 = tab_1.paragraphs[0] run_img1 = ph_img1.add_run('') run_img1.add_picture(img1) def save_img_to_doc(img1,img2,tpl_doc,res_doc): \"\"\"把图片保存到doc文件中的指定位置\"\"\" # 打开模板文件 document = Document(tpl_doc) # 插入图片居中 center_insert_img(document, img1,img2) # 保存结果文件 document.save(res_doc) import zipfile from PIL import Image import os import re def get_img_from_excel(test_file): new_file = test_file.replace(\".xlsx\",\".zip\") os.rename(test_file,new_file) azip = zipfile.ZipFile(new_file) namelist = (azip.namelist()) print(namelist) img_name = 1 for idx in range(0,len(namelist)): if 'media' in namelist[idx] and 'jpeg' in namelist[idx]: f = azip.open(namelist[idx]) img = Image.open(f) img = img.convert(\"RGB\") print(img_name) img.save('image'+str(img_name)+'.jpeg',\"jpeg\") img_name += 1 azip.close() def remvocePiont(str_in): # index = str.find(\".\") # return str[0:index] str_in = str(str_in) str_in = str_in.replace('null', '').replace('NULL', '') if str_in.strip() == '': str_in = '/' return str_in def get_level(b_74_1): if b_74_1 == '': return b_74_1 b_74_1 = b_74_1.replace('null', '2类') # print(b_74_1) b_74_1 = b_74_1.split(':')[1] b_74_1 = b_74_1.split(' ')[0] if '类类' in b_74_1: b_74_1 = b_74_1[:-1] return b_74_1 def get_next_year(b_76_1): if b_76_1 == '': return b_76_1 b_76_1 = b_76_1.split('-')[0] b_76_1 = int(b_76_1) + 1 return b_76_1 print(\"------------WORD保存路径-------------------\") print(\"转换成功后的WORD文件保存在 :\" + r\"D:\\desk\\out\") print(\"-------------------------------\") # path = input(\"请输入excel文件路径+文件名（如：D:\\Desktop\\data.xlsx）：\") # path_dir = r'D:\\Users\\Modesty\\Desktop\\工作\\京昆高速桥梁卡片') path_dir = r'D:\\desk\\zuoye\\1\\2' for path in os.listdir(path_dir): print(\"开始转换，请稍等······ \") path = path_dir + '\\\\' + path print(path) # path = r'C:\\Users\\liujie\\Desktop\\1\\G5Z001EL0010京周路立交A匝道桥(右幅)卡片_2.xlsx' # C:\\Users\\liujie\\Desktop\\1\\G5Z001EL0010京周路立交A匝道桥(右幅)卡片_2.xlsx xl = xlrd.open_workbook(path) # 读取第一个表 table = xl.sheet_by_name(xl.sheet_names()[0]) # 获取表中行数 nrows = table.nrows # 生成Word文档存储目录 template_path = \"template_3.docx\" doc = MailMerge(template_path) # 打开模板文件 title = table.row_values(0)[0] a_0 = table.row_values(1)[3] b_1 = table.row_values(3)[2] b_2 = table.row_values(3)[5] b_3 = table.row_values(3)[8] b_4 = table.row_values(4)[2] b_5 = table.row_values(4)[5] b_6 = table.row_values(4)[8] b_7 = table.row_values(5)[2] if b_7.strip() == '': b_7 = '公路桥梁' b_8 = table.row_values(5)[5] b_9 = table.row_values(5)[8] b_10 = table.row_values(6)[2] b_11 = table.row_values(6)[5] b_12 = table.row_values(6)[8] b_13 = table.row_values(7)[2] b_14 = table.row_values(7)[5] b_15 = table.row_values(7)[8] b_16 = table.row_values(8)[2] b_17 = table.row_values(8)[5] b_18 = table.row_values(8)[8] b_19 = table.row_values(10)[2] b_20 = table.row_values(10)[5] b_21 = table.row_values(10)[8] b_22 = table.row_values(11)[2] b_23 = table.row_values(11)[5] b_24 = table.row_values(11)[8] b_25 = table.row_values(12)[2] b_26 = table.row_values(12)[5] b_27 = table.row_values(12)[8] b_28 = table.row_values(13)[2] b_29 = table.row_values(13)[5] b_30 = table.row_values(13)[8] b_31 = table.row_values(14)[2] b_32 = table.row_values(14)[5] b_33 = table.row_values(14)[8] b_34 = table.row_values(15)[7] b_35 = table.row_values(17)[2] b_36 = table.row_values(18)[2] b_37 = table.row_values(19)[3] b_38 = table.row_values(20)[3] b_39 = table.row_values(21)[3] b_40 = table.row_values(22)[3] b_41 = table.row_values(23)[3] b_42 = table.row_values(24)[3] b_43 = table.row_values(25)[3] b_44 = table.row_values(26)[3] b_45 = table.row_values(27)[3] b_46 = table.row_values(28)[3] b_47 = table.row_values(29)[3] b_48 = table.row_values(30)[3] b_49 = table.row_values(31)[3] b_50 = table.row_values(32)[3] b_51 = table.row_values(33)[3] b_52 = table.row_values(34)[3] b_53 = table.row_values(35)[3] b_54 = table.row_values(36)[3] b_55 = table.row_values(37)[3] b_56 = table.row_values(38)[3] b_57 = table.row_values(39)[3] b_58 = table.row_values(40)[3] b_59 = table.row_values(41)[3] # 读取第二个表 table = xl.sheet_by_name(xl.sheet_names()[1]) b_60 = table.row_values(1)[2] b_61 = table.row_values(1)[5] b_62 = table.row_values(1)[8] b_63 = table.row_values(2)[2] b_64 = table.row_values(2)[5] b_65 = table.row_values(2)[8] b_66 = table.row_values(3)[2] b_67 = table.row_values(3)[5] b_68 = table.row_values(3)[8] b_69 = table.row_values(4)[2] b_70 = table.row_values(4)[5] b_71 = table.row_values(4)[8] b_72_1 = table.row_values(8)[0] b_72_2 = table.row_values(9)[0] b_72_3 = table.row_values(10)[0] b_72_4 = table.row_values(11)[0] b_72_5 = table.row_values(12)[0] b_72_6 = table.row_values(13)[0] b_72_7 = table.row_values(14)[0] b_72_8 = table.row_values(15)[0] b_73_1 = table.row_values(8)[2] b_73_2 = table.row_values(9)[2] b_73_3 = table.row_values(10)[2] b_73_4 = table.row_values(11)[2] b_73_5 = table.row_values(12)[2] b_73_6 = table.row_values(13)[2] b_73_7 = table.row_values(14)[2] b_73_8 = table.row_values(15)[2] b_74_1 = get_level(table.row_values(8)[3]) b_74_2 = get_level(table.row_values(9)[3]) b_74_3 = get_level(table.row_values(10)[3]) b_74_4 = get_level(table.row_values(11)[3]) b_74_5 = get_level(table.row_values(12)[3]) b_74_6 = get_level(table.row_values(13)[3]) b_74_7 = get_level(table.row_values(14)[3]) b_74_8 = get_level(table.row_values(15)[3]) # b_75_1 = table.row_values(8)[5] # b_75_2 = table.row_values(9)[5] # b_75_3 = table.row_values(10)[5] # b_75_4 = table.row_values(11)[5] # b_75_5 = table.row_values(12)[5] # b_75_6 = table.row_values(13)[5] # b_75_7 = table.row_values(14)[5] # b_75_8 = table.row_values(15)[5] b_75_1 = '需进行小修保养' b_75_2 = '需进行小修保养' b_75_3 = '需进行小修保养' b_75_4 = '需进行小修保养' b_75_5 = '需进行小修保养' b_75_6 = '需进行小修保养' b_75_7 = '需进行小修保养' b_75_8 = '需进行小修保养' b_76_1 = get_next_year(table.row_values(8)[0]) b_76_2 = get_next_year(table.row_values(9)[0]) b_76_3 = get_next_year(table.row_values(10)[0]) b_76_4 = get_next_year(table.row_values(11)[0]) b_76_5 = get_next_year(table.row_values(12)[0]) b_76_6 = get_next_year(table.row_values(13)[0]) b_76_7 = get_next_year(table.row_values(14)[0]) b_76_8 = get_next_year(table.row_values(15)[0]) table = xl.sheet_by_name(xl.sheet_names()[2]) b_91 = table.row_values(15)[4] b_92 = table.row_values(15)[9] b_93 = str(xldate_as_datetime(table.row_values(15)[20], 0).strftime('%Y/%m/%d')) # 以下为填充模板中对应的域， doc.merge(title=title, a_0=remvocePiont(a_0), b_1=remvocePiont(b_1), b_2=remvocePiont(b_2), b_3=remvocePiont(b_3), b_4=remvocePiont(b_4), b_5=remvocePiont(b_5), b_6=remvocePiont(b_6), b_7=remvocePiont(b_7), b_8=remvocePiont(b_8), b_9=remvocePiont(b_9), b_10=remvocePiont(b_10), b_11=remvocePiont(b_11), b_12=remvocePiont(b_12), b_13=remvocePiont(b_13), b_14=remvocePiont(b_14), b_15=remvocePiont(b_15), b_16=remvocePiont(b_16), b_17=remvocePiont(b_17), b_18=remvocePiont(b_18), b_19=remvocePiont(b_19), b_20=remvocePiont(b_20), b_21=remvocePiont(b_21), b_22=remvocePiont(b_22), b_23=remvocePiont(b_23), b_24=remvocePiont(b_24), b_25=remvocePiont(b_25), b_26=remvocePiont(b_26), b_27=remvocePiont(b_27), b_28=remvocePiont(b_28), b_29=remvocePiont(b_29), b_30=remvocePiont(b_30), b_31=remvocePiont(b_31), b_32=remvocePiont(b_32), b_33=remvocePiont(b_33), b_34=remvocePiont(b_34), b_35=remvocePiont(b_35), b_36=remvocePiont(b_36), b_37=remvocePiont(b_37), b_38=remvocePiont(b_38), b_39=remvocePiont(b_39), b_40=remvocePiont(b_40), b_41=remvocePiont(b_41), b_42=remvocePiont(b_42), b_43=remvocePiont(b_43), b_44=remvocePiont(b_44), b_45=remvocePiont(b_45), b_46=remvocePiont(b_46), b_47=remvocePiont(b_47), b_48=remvocePiont(b_48), b_49=remvocePiont(b_49), b_50=remvocePiont(b_50), b_51=remvocePiont(b_51), b_52=remvocePiont(b_52), b_53=remvocePiont(b_53), b_54=remvocePiont(b_54), b_55=remvocePiont(b_55), b_56=remvocePiont(b_56), b_57=remvocePiont(b_57), b_58=remvocePiont(b_58), b_59=remvocePiont(b_59), b_60=remvocePiont(b_60), b_61=remvocePiont(b_61), b_62=remvocePiont(b_62), b_63=remvocePiont(b_63), b_64=remvocePiont(b_64), b_65=remvocePiont(b_65), b_66=remvocePiont(b_66), b_67=remvocePiont(b_67), b_68=remvocePiont(b_68), b_69=remvocePiont(b_69), b_70=remvocePiont(b_70), b_71=remvocePiont(b_71), b_72_1 = remvocePiont(b_72_1), b_72_2 = remvocePiont(b_72_2), b_72_3 = remvocePiont(b_72_3), b_72_4 = remvocePiont(b_72_4), b_72_5 = remvocePiont(b_72_5), b_72_6 = remvocePiont(b_72_6), b_72_7 = remvocePiont(b_72_7), b_72_8 = remvocePiont(b_72_8), b_73_1 = remvocePiont(b_73_1), b_73_2 = remvocePiont(b_73_2), b_73_3 = remvocePiont(b_73_3), b_73_4 = remvocePiont(b_73_4), b_73_5 = remvocePiont(b_73_5), b_73_6 = remvocePiont(b_73_6), b_73_7 = remvocePiont(b_73_7), b_73_8 = remvocePiont(b_73_8), b_74_1 = remvocePiont(b_74_1), b_74_2 = remvocePiont(b_74_2), b_74_3 = remvocePiont(b_74_3), b_74_4 = remvocePiont(b_74_4), b_74_5 = remvocePiont(b_74_5), b_74_6 = remvocePiont(b_74_6), b_74_7 = remvocePiont(b_74_7), b_74_8 = remvocePiont(b_74_8), b_75_1 = remvocePiont(b_75_1), b_75_2 = remvocePiont(b_75_2), b_75_3 = remvocePiont(b_75_3), b_75_4 = remvocePiont(b_75_4), b_75_5 = remvocePiont(b_75_5), b_75_6 = remvocePiont(b_75_6), b_75_7 = remvocePiont(b_75_7), b_75_8 = remvocePiont(b_75_8), b_76_1 = remvocePiont(b_76_1), b_76_2 = remvocePiont(b_76_2), b_76_3 = remvocePiont(b_76_3), b_76_4 = remvocePiont(b_76_4), b_76_5 = remvocePiont(b_76_5), b_76_6 = remvocePiont(b_76_6), b_76_7 = remvocePiont(b_76_7), b_76_8 = remvocePiont(b_76_8), b_91 = remvocePiont(b_91), b_93 = b_93 ) # 使用文件名 日期名称 # path_name = r'D:\\Users\\Modesty\\Desktop\\工作\\out' path_name = r'D:\\desk\\zuoye\\1' file_name = path.split('\\\\')[-1].replace('.xlsx', '') if not os.path.exists(path_name): os.makedirs(path_name) word_name = path_name +\"\\\\\"+ file_name + '.docx' doc.write(word_name) doc.close() get_img_from_excel(path) save_img_to_doc(path_name+'\\\\image1.jpeg',path_name+'\\\\image2.jpeg',word_name,word_name) print(\"转换成功\") # time.sleep(5) ",
+  "wordCount" : "1599",
+  "inLanguage": "en",
+  "datePublished": "2023-04-24T22:33:40+08:00",
+  "dateModified": "2023-04-24T22:33:40+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Modest"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Modest's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://modesty258.github.io/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://modesty258.github.io/" accesskey="h" title="Modest&#39;s Blog (Alt + H)">
+            <img src="https://modesty258.github.io/img/Q.gif" alt="logo" aria-label="logo"
+                 height="35">Modest&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://modesty258.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/links" title="🤝 友链">
+                <span>🤝 友链</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+</style>
+
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://modesty258.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/tech/">👨🏻‍💻 python</a></div>
+            <h1 class="post-title">
+                Execl转化为word
+            </h1>
+            <div class="post-description">
+                将带有表格excel转化为word（可以带有图片）
+            </div>
+<div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-04-24
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1599字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>4分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>Modest
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+            </span>
+        </span>
+    </span>
+</span>
+
+    &nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+    </ul>
+
+    
+    
+    
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_page_pv">
+        &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+    
+    
+    
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
+    </script>
+    <script>
+        let url = document.documentURI
+        
+        let dnsUrl = "https://modesty258.github.io/"
+        let urlSplit = url.split(dnsUrl)
+        let finalUrl = urlSplit[1]
+        if (finalUrl[0] !== '/') {
+            finalUrl = '/'+finalUrl
+        }
+        twikoo.getCommentsCount({
+            envId:  null ,
+            region:  null ,
+            urls: [
+                finalUrl,
+            ],
+            includeReply: false 
+        }).then(function (res) {
+            let count = res[0].count
+            const obj = document.getElementById("comment_count");
+            obj.innerText = count
+            
+            
+            
+        }).catch(function (err) {
+            
+            console.error(err);
+        });
+    </script>
+    &nbsp;| 评论: &nbsp; <span id="comment_count"></span>
+
+</div>
+        <div class="post-content"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> xlrd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> mailmerge <span style="color:#f92672">import</span> MailMerge
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> xlrd <span style="color:#f92672">import</span> xldate_as_datetime, xldate_as_tuple
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> docx <span style="color:#f92672">import</span> Document
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> docx.shared <span style="color:#f92672">import</span> Inches
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> docx.oxml.ns <span style="color:#f92672">import</span> qn
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> docx.enum.text <span style="color:#f92672">import</span> WD_ALIGN_PARAGRAPH
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">center_insert_img</span>(doc, img1, img2):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;插入图片&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    tables <span style="color:#f92672">=</span> doc<span style="color:#f92672">.</span>tables
+</span></span><span style="display:flex;"><span>    tab_2 <span style="color:#f92672">=</span> tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>rows[<span style="color:#ae81ff">65</span>]<span style="color:#f92672">.</span>cells[<span style="color:#ae81ff">30</span>]
+</span></span><span style="display:flex;"><span>    ph_img2 <span style="color:#f92672">=</span> tab_2<span style="color:#f92672">.</span>paragraphs[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    run_img2 <span style="color:#f92672">=</span> ph_img2<span style="color:#f92672">.</span>add_run(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    run_img2<span style="color:#f92672">.</span>add_picture(img2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    tab_1 <span style="color:#f92672">=</span> tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>rows[<span style="color:#ae81ff">65</span>]<span style="color:#f92672">.</span>cells[<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    ph_img1 <span style="color:#f92672">=</span> tab_1<span style="color:#f92672">.</span>paragraphs[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    run_img1 <span style="color:#f92672">=</span> ph_img1<span style="color:#f92672">.</span>add_run(<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    run_img1<span style="color:#f92672">.</span>add_picture(img1)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_img_to_doc</span>(img1,img2,tpl_doc,res_doc):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;把图片保存到doc文件中的指定位置&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 打开模板文件</span>
+</span></span><span style="display:flex;"><span>    document <span style="color:#f92672">=</span> Document(tpl_doc)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 插入图片居中</span>
+</span></span><span style="display:flex;"><span>    center_insert_img(document, img1,img2)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 保存结果文件</span>
+</span></span><span style="display:flex;"><span>    document<span style="color:#f92672">.</span>save(res_doc)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> zipfile
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_img_from_excel</span>(test_file):
+</span></span><span style="display:flex;"><span>    new_file <span style="color:#f92672">=</span> test_file<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;.xlsx&#34;</span>,<span style="color:#e6db74">&#34;.zip&#34;</span>)
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>rename(test_file,new_file)
+</span></span><span style="display:flex;"><span>    azip <span style="color:#f92672">=</span> zipfile<span style="color:#f92672">.</span>ZipFile(new_file)
+</span></span><span style="display:flex;"><span>    namelist <span style="color:#f92672">=</span> (azip<span style="color:#f92672">.</span>namelist())
+</span></span><span style="display:flex;"><span>    print(namelist)
+</span></span><span style="display:flex;"><span>    img_name <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(namelist)):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>  <span style="color:#e6db74">&#39;media&#39;</span> <span style="color:#f92672">in</span> namelist[idx] <span style="color:#f92672">and</span> <span style="color:#e6db74">&#39;jpeg&#39;</span> <span style="color:#f92672">in</span> namelist[idx]:
+</span></span><span style="display:flex;"><span>            f <span style="color:#f92672">=</span> azip<span style="color:#f92672">.</span>open(namelist[idx])
+</span></span><span style="display:flex;"><span>            img <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(f)
+</span></span><span style="display:flex;"><span>            img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>convert(<span style="color:#e6db74">&#34;RGB&#34;</span>)
+</span></span><span style="display:flex;"><span>            print(img_name)
+</span></span><span style="display:flex;"><span>            img<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;image&#39;</span><span style="color:#f92672">+</span>str(img_name)<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;.jpeg&#39;</span>,<span style="color:#e6db74">&#34;jpeg&#34;</span>)
+</span></span><span style="display:flex;"><span>            img_name <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    azip<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remvocePiont</span>(str_in):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># index = str.find(&#34;.&#34;)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># return str[0:index]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    str_in <span style="color:#f92672">=</span> str(str_in)
+</span></span><span style="display:flex;"><span>    str_in <span style="color:#f92672">=</span> str_in<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;null&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;NULL&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> str_in<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>    	str_in <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> str_in
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_level</span>(b_74_1):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> b_74_1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> b_74_1
+</span></span><span style="display:flex;"><span>    b_74_1 <span style="color:#f92672">=</span> b_74_1<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;null&#39;</span>, <span style="color:#e6db74">&#39;2类&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print(b_74_1)</span>
+</span></span><span style="display:flex;"><span>    b_74_1 <span style="color:#f92672">=</span> b_74_1<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;:&#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    b_74_1 <span style="color:#f92672">=</span> b_74_1<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;类类&#39;</span> <span style="color:#f92672">in</span> b_74_1:
+</span></span><span style="display:flex;"><span>        b_74_1 <span style="color:#f92672">=</span> b_74_1[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> b_74_1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_next_year</span>(b_76_1):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> b_76_1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> b_76_1
+</span></span><span style="display:flex;"><span>    b_76_1 <span style="color:#f92672">=</span> b_76_1<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;-&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    b_76_1 <span style="color:#f92672">=</span> int(b_76_1) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> b_76_1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;------------WORD保存路径-------------------&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;转换成功后的WORD文件保存在 :&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;D:\desk\out&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;-------------------------------&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># path = input(&#34;请输入excel文件路径+文件名（如：D:\Desktop\data.xlsx）：&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># path_dir = r&#39;D:\Users\Modesty\Desktop\工作\京昆高速桥梁卡片&#39;)</span>
+</span></span><span style="display:flex;"><span>path_dir <span style="color:#f92672">=</span>  <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;D:\desk\zuoye\1\2&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> path <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(path_dir):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;开始转换，请稍等······ &#34;</span>)
+</span></span><span style="display:flex;"><span>  path <span style="color:#f92672">=</span> path_dir <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">+</span> path
+</span></span><span style="display:flex;"><span>  print(path)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># path = r&#39;C:\Users\liujie\Desktop\1\G5Z001EL0010京周路立交A匝道桥(右幅)卡片_2.xlsx&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># C:\Users\liujie\Desktop\1\G5Z001EL0010京周路立交A匝道桥(右幅)卡片_2.xlsx</span>
+</span></span><span style="display:flex;"><span>  xl <span style="color:#f92672">=</span> xlrd<span style="color:#f92672">.</span>open_workbook(path)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 读取第一个表</span>
+</span></span><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> xl<span style="color:#f92672">.</span>sheet_by_name(xl<span style="color:#f92672">.</span>sheet_names()[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 获取表中行数</span>
+</span></span><span style="display:flex;"><span>  nrows <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>nrows
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 生成Word文档存储目录</span>
+</span></span><span style="display:flex;"><span>  template_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;template_3.docx&#34;</span>
+</span></span><span style="display:flex;"><span>  doc <span style="color:#f92672">=</span> MailMerge(template_path)  <span style="color:#75715e"># 打开模板文件</span>
+</span></span><span style="display:flex;"><span>  title <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">0</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  a_0 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_1 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_2 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_3 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_4 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_5 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_6 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_7 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">5</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> b_7<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span>:
+</span></span><span style="display:flex;"><span>  	b_7 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;公路桥梁&#39;</span>
+</span></span><span style="display:flex;"><span>  b_8 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">5</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_9 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">5</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_10 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">6</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_11 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">6</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_12 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">6</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_13 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">7</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_14 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">7</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_15 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">7</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_16 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_17 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_18 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_19 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_20 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_21 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_22 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_23 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_24 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_25 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_26 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_27 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_28 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_29 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_30 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_31 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_32 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_33 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_34 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">7</span>]
+</span></span><span style="display:flex;"><span>  b_35 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">17</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_36 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">18</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_37 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">19</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_38 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">20</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_39 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">21</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_40 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">22</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_41 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">23</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_42 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">24</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_43 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">25</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_44 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">26</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_45 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">27</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_46 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">28</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_47 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">29</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_48 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">30</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_49 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">31</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_50 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">32</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_51 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">33</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_52 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">34</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_53 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">35</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_54 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">36</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_55 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">37</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_56 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">38</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_57 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">39</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_58 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">40</span>)[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>  b_59 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">41</span>)[<span style="color:#ae81ff">3</span>] 
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 读取第二个表</span>
+</span></span><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> xl<span style="color:#f92672">.</span>sheet_by_name(xl<span style="color:#f92672">.</span>sheet_names()[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>  b_60 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_61 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_62 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">1</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_63 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">2</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_64 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">2</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_65 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">2</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_66 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_67 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_68 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>  b_69 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_70 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>  b_71 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">4</span>)[<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  b_72_1 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_2 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">9</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_3 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_4 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_5 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_6 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_7 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>  b_72_8 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  b_73_1 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_2 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">9</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_3 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_4 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_5 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_6 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_7 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  b_73_8 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  b_74_1 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_2 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">9</span>)[<span style="color:#ae81ff">3</span>])  
+</span></span><span style="display:flex;"><span>  b_74_3 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_4 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_5 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_6 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_7 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>  b_74_8 <span style="color:#f92672">=</span> get_level(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_1 = table.row_values(8)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_2 = table.row_values(9)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_3 = table.row_values(10)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_4 = table.row_values(11)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_5 = table.row_values(12)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_6 = table.row_values(13)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_7 = table.row_values(14)[5]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># b_75_8 = table.row_values(15)[5]</span>
+</span></span><span style="display:flex;"><span>  b_75_1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_4 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_5 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_6 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_7 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>  b_75_8 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;需进行小修保养&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  b_76_1 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">8</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_2 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">9</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_3 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">10</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_4 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">11</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_5 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">12</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_6 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">13</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_7 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">14</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  b_76_8 <span style="color:#f92672">=</span> get_next_year(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  table <span style="color:#f92672">=</span> xl<span style="color:#f92672">.</span>sheet_by_name(xl<span style="color:#f92672">.</span>sheet_names()[<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>  b_91 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>  b_92 <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">9</span>]
+</span></span><span style="display:flex;"><span>  b_93 <span style="color:#f92672">=</span> str(xldate_as_datetime(table<span style="color:#f92672">.</span>row_values(<span style="color:#ae81ff">15</span>)[<span style="color:#ae81ff">20</span>], <span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y/%m/</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 以下为填充模板中对应的域，</span>
+</span></span><span style="display:flex;"><span>  doc<span style="color:#f92672">.</span>merge(title<span style="color:#f92672">=</span>title,
+</span></span><span style="display:flex;"><span>            a_0<span style="color:#f92672">=</span>remvocePiont(a_0),
+</span></span><span style="display:flex;"><span>            b_1<span style="color:#f92672">=</span>remvocePiont(b_1),
+</span></span><span style="display:flex;"><span>            b_2<span style="color:#f92672">=</span>remvocePiont(b_2),
+</span></span><span style="display:flex;"><span>            b_3<span style="color:#f92672">=</span>remvocePiont(b_3),
+</span></span><span style="display:flex;"><span>            b_4<span style="color:#f92672">=</span>remvocePiont(b_4),
+</span></span><span style="display:flex;"><span>            b_5<span style="color:#f92672">=</span>remvocePiont(b_5),
+</span></span><span style="display:flex;"><span>            b_6<span style="color:#f92672">=</span>remvocePiont(b_6),
+</span></span><span style="display:flex;"><span>            b_7<span style="color:#f92672">=</span>remvocePiont(b_7),
+</span></span><span style="display:flex;"><span>            b_8<span style="color:#f92672">=</span>remvocePiont(b_8),
+</span></span><span style="display:flex;"><span>            b_9<span style="color:#f92672">=</span>remvocePiont(b_9),
+</span></span><span style="display:flex;"><span>            b_10<span style="color:#f92672">=</span>remvocePiont(b_10),
+</span></span><span style="display:flex;"><span>            b_11<span style="color:#f92672">=</span>remvocePiont(b_11),
+</span></span><span style="display:flex;"><span>            b_12<span style="color:#f92672">=</span>remvocePiont(b_12),
+</span></span><span style="display:flex;"><span>            b_13<span style="color:#f92672">=</span>remvocePiont(b_13),
+</span></span><span style="display:flex;"><span>            b_14<span style="color:#f92672">=</span>remvocePiont(b_14),
+</span></span><span style="display:flex;"><span>            b_15<span style="color:#f92672">=</span>remvocePiont(b_15),
+</span></span><span style="display:flex;"><span>            b_16<span style="color:#f92672">=</span>remvocePiont(b_16),
+</span></span><span style="display:flex;"><span>            b_17<span style="color:#f92672">=</span>remvocePiont(b_17),
+</span></span><span style="display:flex;"><span>            b_18<span style="color:#f92672">=</span>remvocePiont(b_18),
+</span></span><span style="display:flex;"><span>            b_19<span style="color:#f92672">=</span>remvocePiont(b_19),
+</span></span><span style="display:flex;"><span>            b_20<span style="color:#f92672">=</span>remvocePiont(b_20),
+</span></span><span style="display:flex;"><span>            b_21<span style="color:#f92672">=</span>remvocePiont(b_21),
+</span></span><span style="display:flex;"><span>            b_22<span style="color:#f92672">=</span>remvocePiont(b_22),
+</span></span><span style="display:flex;"><span>            b_23<span style="color:#f92672">=</span>remvocePiont(b_23),
+</span></span><span style="display:flex;"><span>            b_24<span style="color:#f92672">=</span>remvocePiont(b_24),
+</span></span><span style="display:flex;"><span>            b_25<span style="color:#f92672">=</span>remvocePiont(b_25),
+</span></span><span style="display:flex;"><span>            b_26<span style="color:#f92672">=</span>remvocePiont(b_26),
+</span></span><span style="display:flex;"><span>            b_27<span style="color:#f92672">=</span>remvocePiont(b_27),
+</span></span><span style="display:flex;"><span>            b_28<span style="color:#f92672">=</span>remvocePiont(b_28),
+</span></span><span style="display:flex;"><span>            b_29<span style="color:#f92672">=</span>remvocePiont(b_29),
+</span></span><span style="display:flex;"><span>            b_30<span style="color:#f92672">=</span>remvocePiont(b_30),
+</span></span><span style="display:flex;"><span>            b_31<span style="color:#f92672">=</span>remvocePiont(b_31),
+</span></span><span style="display:flex;"><span>            b_32<span style="color:#f92672">=</span>remvocePiont(b_32),
+</span></span><span style="display:flex;"><span>            b_33<span style="color:#f92672">=</span>remvocePiont(b_33),
+</span></span><span style="display:flex;"><span>            b_34<span style="color:#f92672">=</span>remvocePiont(b_34),
+</span></span><span style="display:flex;"><span>            b_35<span style="color:#f92672">=</span>remvocePiont(b_35),
+</span></span><span style="display:flex;"><span>            b_36<span style="color:#f92672">=</span>remvocePiont(b_36),
+</span></span><span style="display:flex;"><span>            b_37<span style="color:#f92672">=</span>remvocePiont(b_37),
+</span></span><span style="display:flex;"><span>            b_38<span style="color:#f92672">=</span>remvocePiont(b_38),
+</span></span><span style="display:flex;"><span>            b_39<span style="color:#f92672">=</span>remvocePiont(b_39),
+</span></span><span style="display:flex;"><span>            b_40<span style="color:#f92672">=</span>remvocePiont(b_40),
+</span></span><span style="display:flex;"><span>            b_41<span style="color:#f92672">=</span>remvocePiont(b_41),
+</span></span><span style="display:flex;"><span>            b_42<span style="color:#f92672">=</span>remvocePiont(b_42),
+</span></span><span style="display:flex;"><span>            b_43<span style="color:#f92672">=</span>remvocePiont(b_43),
+</span></span><span style="display:flex;"><span>            b_44<span style="color:#f92672">=</span>remvocePiont(b_44),
+</span></span><span style="display:flex;"><span>            b_45<span style="color:#f92672">=</span>remvocePiont(b_45),
+</span></span><span style="display:flex;"><span>            b_46<span style="color:#f92672">=</span>remvocePiont(b_46),
+</span></span><span style="display:flex;"><span>            b_47<span style="color:#f92672">=</span>remvocePiont(b_47),
+</span></span><span style="display:flex;"><span>            b_48<span style="color:#f92672">=</span>remvocePiont(b_48),
+</span></span><span style="display:flex;"><span>            b_49<span style="color:#f92672">=</span>remvocePiont(b_49),
+</span></span><span style="display:flex;"><span>            b_50<span style="color:#f92672">=</span>remvocePiont(b_50),
+</span></span><span style="display:flex;"><span>            b_51<span style="color:#f92672">=</span>remvocePiont(b_51),
+</span></span><span style="display:flex;"><span>            b_52<span style="color:#f92672">=</span>remvocePiont(b_52),
+</span></span><span style="display:flex;"><span>            b_53<span style="color:#f92672">=</span>remvocePiont(b_53),
+</span></span><span style="display:flex;"><span>            b_54<span style="color:#f92672">=</span>remvocePiont(b_54),
+</span></span><span style="display:flex;"><span>            b_55<span style="color:#f92672">=</span>remvocePiont(b_55),
+</span></span><span style="display:flex;"><span>            b_56<span style="color:#f92672">=</span>remvocePiont(b_56),
+</span></span><span style="display:flex;"><span>            b_57<span style="color:#f92672">=</span>remvocePiont(b_57),
+</span></span><span style="display:flex;"><span>            b_58<span style="color:#f92672">=</span>remvocePiont(b_58),
+</span></span><span style="display:flex;"><span>            b_59<span style="color:#f92672">=</span>remvocePiont(b_59),
+</span></span><span style="display:flex;"><span>            b_60<span style="color:#f92672">=</span>remvocePiont(b_60),
+</span></span><span style="display:flex;"><span>            b_61<span style="color:#f92672">=</span>remvocePiont(b_61),
+</span></span><span style="display:flex;"><span>            b_62<span style="color:#f92672">=</span>remvocePiont(b_62),
+</span></span><span style="display:flex;"><span>            b_63<span style="color:#f92672">=</span>remvocePiont(b_63),
+</span></span><span style="display:flex;"><span>            b_64<span style="color:#f92672">=</span>remvocePiont(b_64),
+</span></span><span style="display:flex;"><span>            b_65<span style="color:#f92672">=</span>remvocePiont(b_65),
+</span></span><span style="display:flex;"><span>            b_66<span style="color:#f92672">=</span>remvocePiont(b_66),
+</span></span><span style="display:flex;"><span>            b_67<span style="color:#f92672">=</span>remvocePiont(b_67),
+</span></span><span style="display:flex;"><span>            b_68<span style="color:#f92672">=</span>remvocePiont(b_68),
+</span></span><span style="display:flex;"><span>            b_69<span style="color:#f92672">=</span>remvocePiont(b_69),
+</span></span><span style="display:flex;"><span>            b_70<span style="color:#f92672">=</span>remvocePiont(b_70),
+</span></span><span style="display:flex;"><span>            b_71<span style="color:#f92672">=</span>remvocePiont(b_71),
+</span></span><span style="display:flex;"><span>            b_72_1 <span style="color:#f92672">=</span> remvocePiont(b_72_1),
+</span></span><span style="display:flex;"><span>            b_72_2 <span style="color:#f92672">=</span> remvocePiont(b_72_2),
+</span></span><span style="display:flex;"><span>            b_72_3 <span style="color:#f92672">=</span> remvocePiont(b_72_3),
+</span></span><span style="display:flex;"><span>            b_72_4 <span style="color:#f92672">=</span> remvocePiont(b_72_4),
+</span></span><span style="display:flex;"><span>            b_72_5 <span style="color:#f92672">=</span> remvocePiont(b_72_5),
+</span></span><span style="display:flex;"><span>            b_72_6 <span style="color:#f92672">=</span> remvocePiont(b_72_6),
+</span></span><span style="display:flex;"><span>            b_72_7 <span style="color:#f92672">=</span> remvocePiont(b_72_7),
+</span></span><span style="display:flex;"><span>            b_72_8 <span style="color:#f92672">=</span> remvocePiont(b_72_8),
+</span></span><span style="display:flex;"><span>            b_73_1 <span style="color:#f92672">=</span> remvocePiont(b_73_1),
+</span></span><span style="display:flex;"><span>            b_73_2 <span style="color:#f92672">=</span> remvocePiont(b_73_2),
+</span></span><span style="display:flex;"><span>            b_73_3 <span style="color:#f92672">=</span> remvocePiont(b_73_3),
+</span></span><span style="display:flex;"><span>            b_73_4 <span style="color:#f92672">=</span> remvocePiont(b_73_4),
+</span></span><span style="display:flex;"><span>            b_73_5 <span style="color:#f92672">=</span> remvocePiont(b_73_5),
+</span></span><span style="display:flex;"><span>            b_73_6 <span style="color:#f92672">=</span> remvocePiont(b_73_6),
+</span></span><span style="display:flex;"><span>            b_73_7 <span style="color:#f92672">=</span> remvocePiont(b_73_7),
+</span></span><span style="display:flex;"><span>            b_73_8 <span style="color:#f92672">=</span> remvocePiont(b_73_8),
+</span></span><span style="display:flex;"><span>            b_74_1 <span style="color:#f92672">=</span> remvocePiont(b_74_1),
+</span></span><span style="display:flex;"><span>            b_74_2 <span style="color:#f92672">=</span> remvocePiont(b_74_2),
+</span></span><span style="display:flex;"><span>            b_74_3 <span style="color:#f92672">=</span> remvocePiont(b_74_3),
+</span></span><span style="display:flex;"><span>            b_74_4 <span style="color:#f92672">=</span> remvocePiont(b_74_4),
+</span></span><span style="display:flex;"><span>            b_74_5 <span style="color:#f92672">=</span> remvocePiont(b_74_5),
+</span></span><span style="display:flex;"><span>            b_74_6 <span style="color:#f92672">=</span> remvocePiont(b_74_6),
+</span></span><span style="display:flex;"><span>            b_74_7 <span style="color:#f92672">=</span> remvocePiont(b_74_7),
+</span></span><span style="display:flex;"><span>            b_74_8 <span style="color:#f92672">=</span> remvocePiont(b_74_8),
+</span></span><span style="display:flex;"><span>            b_75_1 <span style="color:#f92672">=</span> remvocePiont(b_75_1),
+</span></span><span style="display:flex;"><span>            b_75_2 <span style="color:#f92672">=</span> remvocePiont(b_75_2),
+</span></span><span style="display:flex;"><span>            b_75_3 <span style="color:#f92672">=</span> remvocePiont(b_75_3),
+</span></span><span style="display:flex;"><span>            b_75_4 <span style="color:#f92672">=</span> remvocePiont(b_75_4),
+</span></span><span style="display:flex;"><span>            b_75_5 <span style="color:#f92672">=</span> remvocePiont(b_75_5),
+</span></span><span style="display:flex;"><span>            b_75_6 <span style="color:#f92672">=</span> remvocePiont(b_75_6),
+</span></span><span style="display:flex;"><span>            b_75_7 <span style="color:#f92672">=</span> remvocePiont(b_75_7),
+</span></span><span style="display:flex;"><span>            b_75_8 <span style="color:#f92672">=</span> remvocePiont(b_75_8),
+</span></span><span style="display:flex;"><span>            b_76_1 <span style="color:#f92672">=</span> remvocePiont(b_76_1),
+</span></span><span style="display:flex;"><span>            b_76_2 <span style="color:#f92672">=</span> remvocePiont(b_76_2),
+</span></span><span style="display:flex;"><span>            b_76_3 <span style="color:#f92672">=</span> remvocePiont(b_76_3),
+</span></span><span style="display:flex;"><span>            b_76_4 <span style="color:#f92672">=</span> remvocePiont(b_76_4),
+</span></span><span style="display:flex;"><span>            b_76_5 <span style="color:#f92672">=</span> remvocePiont(b_76_5),
+</span></span><span style="display:flex;"><span>            b_76_6 <span style="color:#f92672">=</span> remvocePiont(b_76_6),
+</span></span><span style="display:flex;"><span>            b_76_7 <span style="color:#f92672">=</span> remvocePiont(b_76_7),
+</span></span><span style="display:flex;"><span>            b_76_8 <span style="color:#f92672">=</span> remvocePiont(b_76_8),
+</span></span><span style="display:flex;"><span>            b_91 <span style="color:#f92672">=</span> remvocePiont(b_91),
+</span></span><span style="display:flex;"><span>            b_93 <span style="color:#f92672">=</span> b_93
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># 使用文件名 日期名称</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># path_name = r&#39;D:\Users\Modesty\Desktop\工作\out&#39;</span>
+</span></span><span style="display:flex;"><span>  path_name <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;D:\desk\zuoye\1&#39;</span>
+</span></span><span style="display:flex;"><span>  file_name <span style="color:#f92672">=</span> path<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;.xlsx&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(path_name):
+</span></span><span style="display:flex;"><span>      os<span style="color:#f92672">.</span>makedirs(path_name)
+</span></span><span style="display:flex;"><span>  word_name <span style="color:#f92672">=</span> path_name <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span> file_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.docx&#39;</span>
+</span></span><span style="display:flex;"><span>  doc<span style="color:#f92672">.</span>write(word_name)
+</span></span><span style="display:flex;"><span>  doc<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>  get_img_from_excel(path)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  save_img_to_doc(path_name<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">image1.jpeg&#39;</span>,path_name<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">image2.jpeg&#39;</span>,word_name,word_name)
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#34;转换成功&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># time.sleep(5)</span>
+</span></span></code></pre></div>
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://modesty258.github.io/posts/misc/%E7%BC%96%E7%A0%81/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>编码</span>
+  </a>
+  <a class="next" href="https://modesty258.github.io/posts/blog/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>常见问题</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+
+<style>
+    .comments_details summary::marker {
+        font-size: 20px;
+        content: '👉展开评论';
+        color: var(--content);
+    }
+    .comments_details[open] summary::marker{
+        font-size: 20px;
+        content: '👇关闭评论';
+        color: var(--content);
+    }
+</style>
+
+
+<div>
+    <details class="comments_details">
+        <summary style="cursor: pointer; margin: 50px 0 20px 0;width: 130px;">
+            <span style="font-size: 20px;color: var(--content);">...</span>
+        </summary>
+        <div id="tcomment"></div>
+    </details>
+    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
+    </script>
+    <script>
+        twikoo.init({
+            envId:  null ,
+        el: "#tcomment",
+            lang: 'zh-CN',
+            region:  null ,
+        path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        })
+    </script>
+</div>
+</article>
+</main>
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://modesty258.github.io/" style="color:#939393;">Modest&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;"></a>&nbsp;
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="" style="float:left;margin: 0px 5px 0px 0px;"/>
+            
+        </a>
+    </span>
+    <span id="busuanzi_container">
+        <span class="fa fa-user"></span> <span id="busuanzi_value_site_uv"></span>
+        <span class="fa fa-eye"></span> <span id="busuanzi_value_site_pv"></span>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {}
+            selection.removeRange(range);
+        });
+
+        let language = codeblock.className.replaceAll("language-", "")
+        let macTool = document.createElement("div")
+        let macTool1 = document.createElement("div")
+        let macTool2 = document.createElement("div")
+        let macTool3 = document.createElement("div")
+        let languageType = document.createElement("div")
+        languageType.innerText = language
+        macTool.setAttribute('class', 'mac-tool')
+        macTool1.setAttribute('class', 'mac bb1')
+        macTool2.setAttribute('class', 'mac bb2')
+        macTool3.setAttribute('class', 'mac bb3')
+        languageType.setAttribute('class', 'language-type')
+        macTool.appendChild(macTool1)
+        macTool.appendChild(macTool2)
+        macTool.appendChild(macTool3)
+        macTool.appendChild(languageType)
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        }
+    });
+</script>
+
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+            $(this).css("border-top-right-radius", "var(--radius)")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+        $(this).css("border-top-right-radius", "unset")
+    })
+</script>
+</body>
+
+</html>

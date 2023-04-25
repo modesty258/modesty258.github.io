@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Modest&#39;s Blog</title>
+    <link>https://modesty258.github.io/</link>
+    <description>Recent content on Modest&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Apr 2023 09:29:55 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编码</title>
+      <link>https://modesty258.github.io/posts/misc/%E7%BC%96%E7%A0%81/</link>
+      <pubDate>Tue, 25 Apr 2023 09:29:55 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/misc/%E7%BC%96%E7%A0%81/</guid>
+      <description>一些常见编码，以及部分题目</description>
+    </item>
+    
+    <item>
+      <title>Execl转化为word</title>
+      <link>https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/</link>
+      <pubDate>Mon, 24 Apr 2023 22:33:40 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/tech/execl%E8%BD%AC%E5%8C%96%E4%B8%BAword/</guid>
+      <description>将带有表格excel转化为word（可以带有图片）</description>
+    </item>
+    
+    <item>
+      <title>常见问题</title>
+      <link>https://modesty258.github.io/posts/blog/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 24 Apr 2023 17:42:19 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>我在部署中遇到的一些常见问题</description>
+    </item>
+    
+    <item>
+      <title>利用cmd生成文章</title>
+      <link>https://modesty258.github.io/posts/blog/%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Sun, 23 Apr 2023 22:18:23 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E6%96%87%E7%AB%A0/</guid>
+      <description>1.基本头部信息修改 定位到文件：archetypes/default.md，添加如下代码 --- title: &amp;#34;{{ replace .Name &amp;#34;-&amp;#34; &amp;#34; &amp;#34; | title }}&amp;#34; date: {{ .Date }} lastmod: {{ .Date }} author: [&amp;#34;Sulv&amp;#34;] keywords: - categories: # 没有分类界面可以不填写 - tags: # 标签 - description: &amp;#34;&amp;#34; weight: slug: &amp;#34;&amp;#34; draft: false # 是否为草稿 comments: true # 本页面是否显示评论 reward: true # 打赏 mermaid: true #是否开启mermaid showToc: true # 显示目录 TocOpen: true #</description>
+    </item>
+    
+    <item>
+      <title>连接GitHub</title>
+      <link>https://modesty258.github.io/posts/blog/%E8%BF%9E%E6%8E%A5github/</link>
+      <pubDate>Sun, 23 Apr 2023 09:47:56 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/%E8%BF%9E%E6%8E%A5github/</guid>
+      <description>部署到github https://zz2summer.github.io/github-pages-hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ 我是小垃圾 问题 大体步骤已经很清晰了 将文件放在public中，具体代码实现 hugo 这一步很重要创建public cd public 网站会将初始文件放在这个目录下 git init 初始化 git remote add origin git@github.com:username/username.github.io.git#关联git仓</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://modesty258.github.io/posts/blog/test/</link>
+      <pubDate>Sun, 23 Apr 2023 09:45:27 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/test/</guid>
+      <description>时间和名字都是对的，说明修改好了</description>
+    </item>
+    
+    <item>
+      <title>Tech1</title>
+      <link>https://modesty258.github.io/posts/tech/tech1/</link>
+      <pubDate>Tue, 21 Feb 2023 12:20:21 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/tech/tech1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>https://modesty258.github.io/posts/blog/blog/</link>
+      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>如何生成一篇文章</title>
+      <link>https://modesty258.github.io/posts/blog/%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/</guid>
+      <description>传文字 第一步 新建一个markdown文件在需要的分类下面，起好名字 然后命名好格式 利用源代码模式修改时间和标题等内容 --- title: &amp;#34;如何生成一篇文章&amp;#34; date: 2022-05-05T00:18:23+08:00 lastmod: 2022-05-05T00:18:23+08:00 author: [&amp;#34;Sulv&amp;#34;] keywords: - categories: - tags: - blog description: &amp;#34;&amp;#34; weight: slug: &amp;#34;&amp;#34; draft: false # 是否为草稿 comments: true reward: false # 打赏 mermaid: true #是否开启mermaid showToc: true # 显示目录 TocOpen: true # 自动展开目录</description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://modesty258.github.io/posts/life/life/</link>
+      <pubDate>Thu, 05 May 2022 00:18:15 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/life/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Read</title>
+      <link>https://modesty258.github.io/posts/web/read/</link>
+      <pubDate>Thu, 05 May 2022 00:18:06 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/web/read/</guid>
+      <description>read,hahahaha dididi shanghongliou</description>
+    </item>
+    
+    <item>
+      <title>Read</title>
+      <link>https://modesty258.github.io/posts/read/read/</link>
+      <pubDate>Thu, 05 May 2022 00:18:06 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/read/read/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tech</title>
+      <link>https://modesty258.github.io/posts/tech/tech/</link>
+      <pubDate>Thu, 05 May 2022 00:17:58 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/tech/tech/</guid>
+      <description>科技代码</description>
+    </item>
+    
+    <item>
+      <title>🤝友链</title>
+      <link>https://modesty258.github.io/links/</link>
+      <pubDate>Sat, 06 Nov 2021 15:15:53 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/links/</guid>
+      <description>Sulv&amp;#39;s Blog 一个记录技术、阅读、生活的博客 👉友链格式 名称： Sulv&amp;rsquo;s Blog 网址： https://www.sulvblog.cn 图标： https://www.sulvblog.cn/img/Q.gif 描述： 一个记录技术、阅读、生活的博客 👉友链申请要求 秉承互换友链原则、文章定期更新、不能有太多广告、个人描述字数控制在15字内 👉Hugo博客交流群 787018782</description>
+    </item>
+    
+    <item>
+      <title>🙋🏻‍♂️关于</title>
+      <link>https://modesty258.github.io/about/</link>
+      <pubDate>Sat, 06 Nov 2021 14:57:28 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/about/</guid>
+      <description>关于我 英文名: Kevin Xu 职业: 程序员 运动: 跑步、乒乓球、爬山</description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>
