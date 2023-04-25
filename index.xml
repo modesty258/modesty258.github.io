@@ -6,7 +6,16 @@
     <description>Recent content on Modest&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Apr 2023 09:29:55 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Apr 2023 10:33:28 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用git更新hugo个人blog</title>
+      <link>https://modesty258.github.io/posts/blog/%E4%BD%BF%E7%94%A8git%E6%9B%B4%E6%96%B0hugo%E4%B8%AA%E4%BA%BAblog/</link>
+      <pubDate>Tue, 25 Apr 2023 10:33:28 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/%E4%BD%BF%E7%94%A8git%E6%9B%B4%E6%96%B0hugo%E4%B8%AA%E4%BA%BAblog/</guid>
+      <description>使用Git更新Hugo 个人博客 该文章主要是讨论，如何在本地搭建好hugo静态网页后，上传git到自己的域名下。而且每天进行实时更新。 第一次git push hugo # 生成public cd public git init git remote add origin https://github.com/xxx/xxx.github.io #填写自己的域名 git add . git commit -m &amp;#34;hugo&amp;#34; git push -u origin master 这个基本都会了，不然网站也没法使用 第二次push 为什么要</description>
+    </item>
+    
     <item>
       <title>编码</title>
       <link>https://modesty258.github.io/posts/misc/%E7%BC%96%E7%A0%81/</link>
