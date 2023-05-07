@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>文件分割 | Modest&#39;s Blog</title>
+<title>文件头 | Modest&#39;s Blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="​ 文件分离工具及使用方法 foremost 基本命令 foremost 文件名 执行命令后，会在当前文件夹生成output 也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法 binwalk 工具使用 #查看帮助 python -m binwalk -h #分析文件 python -m binwalk 文件名 #提取文件 python -m binwalk -e wp 第一个文件是一个">
+<meta name="description" content="​ 文件头篇 一、文件头文件尾 1、图片 JPEG 文件头：FF D8 FF 文件尾：FF D9 TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00 PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82 GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M) TIFF (tif) 文件头：49 49 2A 00 ico 文件头：00 00">
 <meta name="author" content="Modest">
-<link rel="canonical" href="https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2/">
+<link rel="canonical" href="https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%A4%B4/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://modesty258.github.io/img/Q.gif">
@@ -73,16 +73,16 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<meta property="og:title" content="文件分割" />
-<meta property="og:description" content="​ 文件分离工具及使用方法 foremost 基本命令 foremost 文件名 执行命令后，会在当前文件夹生成output 也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法 binwalk 工具使用 #查看帮助 python -m binwalk -h #分析文件 python -m binwalk 文件名 #提取文件 python -m binwalk -e wp 第一个文件是一个" />
+<meta property="og:title" content="文件头" />
+<meta property="og:description" content="​ 文件头篇 一、文件头文件尾 1、图片 JPEG 文件头：FF D8 FF 文件尾：FF D9 TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00 PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82 GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M) TIFF (tif) 文件头：49 49 2A 00 ico 文件头：00 00" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-26T15:11:11+08:00" />
-<meta property="article:modified_time" content="2023-04-26T15:11:11+08:00" />
+<meta property="og:url" content="https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%A4%B4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-03T16:05:36+08:00" />
+<meta property="article:modified_time" content="2023-05-03T16:05:36+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="文件分割"/>
-<meta name="twitter:description" content="​ 文件分离工具及使用方法 foremost 基本命令 foremost 文件名 执行命令后，会在当前文件夹生成output 也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法 binwalk 工具使用 #查看帮助 python -m binwalk -h #分析文件 python -m binwalk 文件名 #提取文件 python -m binwalk -e wp 第一个文件是一个"/>
+<meta name="twitter:title" content="文件头"/>
+<meta name="twitter:description" content="​ 文件头篇 一、文件头文件尾 1、图片 JPEG 文件头：FF D8 FF 文件尾：FF D9 TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00 PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82 GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M) TIFF (tif) 文件头：49 49 2A 00 ico 文件头：00 00"/>
 
 
 <script type="application/ld+json">
@@ -107,8 +107,8 @@ var _hmt = _hmt || [];
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "文件分割",
-      "item": "https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2/"
+      "name": "文件头",
+      "item": "https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%A4%B4/"
     }
   ]
 }
@@ -117,24 +117,24 @@ var _hmt = _hmt || [];
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "文件分割",
-  "name": "文件分割",
-  "description": "​ 文件分离工具及使用方法 foremost 基本命令 foremost 文件名 执行命令后，会在当前文件夹生成output 也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法 binwalk 工具使用 #查看帮助 python -m binwalk -h #分析文件 python -m binwalk 文件名 #提取文件 python -m binwalk -e wp 第一个文件是一个",
+  "headline": "文件头",
+  "name": "文件头",
+  "description": "​ 文件头篇 一、文件头文件尾 1、图片 JPEG 文件头：FF D8 FF 文件尾：FF D9 TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00 PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82 GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M) TIFF (tif) 文件头：49 49 2A 00 ico 文件头：00 00",
   "keywords": [
     ""
   ],
-  "articleBody": "​\n文件分离工具及使用方法 foremost 基本命令 foremost 文件名\n执行命令后，会在当前文件夹生成output\n也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法\nbinwalk 工具使用\n#查看帮助 python -m binwalk -h #分析文件 python -m binwalk 文件名 #提取文件 python -m binwalk -e wp 第一个文件是一个图片，很简单，就是基本的一个隐写，直接用foremost分离了就出来了。\nflag{E0D6DEE1-33F0-42E1-9609-ECDFFFE5276C}\n",
-  "wordCount" : "177",
+  "articleBody": "​\n文件头篇 一、文件头文件尾 1、图片 JPEG 文件头：FF D8 FF 文件尾：FF D9 TGA 未压缩的前4字节 00 00 02 00 RLE压缩的前5字节 00 00 10 00 00 PNG 文件头：89 50 4E 47 0D 0A 1A 0A 文件尾：AE 42 60 82 GIF 文件头：47 49 46 38 39(37) 61 文件尾：00 3B BMP 文件头：42 4D 文件头标识(2 bytes) 42(B) 4D(M) TIFF (tif) 文件头：49 49 2A 00 ico 文件头：00 00 01 00 Adobe Photoshop (psd) 文件头：38 42 50 53 2、office文件 MS Word/Excel (xls.or.doc) 文件头：D0 CF 11 E0 MS Access (mdb) 文件头：53 74 61 6E 64 61 72 64 20 4A WordPerfect (wpd) 文件头：FF 57 50 43 Adobe Acrobat (pdf) 文件头：25 50 44 46 2D 31 2E application/vnd.visio(vsd) 文件头：D0 CF 11 E0 A1 B1 1A E1 Email [thorough only] (eml) 文件头：44 65 6C 69 76 65 72 79 2D 64 61 74 65 3A Outlook Express (dbx) 文件头：CF AD 12 FE C5 FD 74 6F Outlook (pst) 文件头：21 42 44 4E Rich Text Format (rtf) 文件头：7B 5C 72 74 66 txt 文件(txt) 文件头：Unicode：FE FF / Unicode big endian：FF FE / UTF-8：EF BB BF /ANSI编码是没有文件头的 3、压缩包文件 ZIP Archive (zip) 文件头：50 4B 03 04 文件尾：50 4B RAR Archive (rar) 文件头：52 61 72 21 4、音频文件 Wave (wav) 文件头：57 41 56 45 audio(Audio) 文件头： 4D 54 68 64 audio/x-aac（aac） 文件头：FF F1(9) 5、视频文件 AVI (avi) 文件头：41 56 49 20 Real Audio (ram) 文件头：2E 72 61 FD Real Media (rm) 文件头：2E 52 4D 46 MPEG (mpg) 文件头：00 00 01 BA(3) Quicktime (mov) 文件头：6D 6F 6F 76 Windows Media (asf) 文件头：30 26 B2 75 8E 66 CF 11 MIDI (mid) 文件头：4D 54 68 64 6、代码文件 XML (xml) 文件头：3C 3F 78 6D 6C HTML (html) 文件头：68 74 6D 6C 3E Quicken (qdf) 文件头：AC 9E BD 8F Windows Password (pwl) 文件头：E3 82 85 96 7、其他类型 windows证书文件(der) 文件头：30 82 03 C9 CAD (dwg) 文件头：41 43 31 30 Windows Shortcut (lnk) 文件头：4C 00 00 00 Windows reg(reg) 文件头：52 45 47 45 44 49 54 34 压缩包隐写类 ",
+  "wordCount" : "664",
   "inLanguage": "en",
-  "datePublished": "2023-04-26T15:11:11+08:00",
-  "dateModified": "2023-04-26T15:11:11+08:00",
+  "datePublished": "2023-05-03T16:05:36+08:00",
+  "dateModified": "2023-05-03T16:05:36+08:00",
   "author":[{
     "@type": "Person",
     "name": "Modest"
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2/"
+    "@id": "https://modesty258.github.io/posts/misc/%E6%96%87%E4%BB%B6%E5%A4%B4/"
   },
   "publisher": {
     "@type": "Organization",
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
         <header class="post-header">
             <div class="breadcrumbs"><a href="https://modesty258.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/misc/">📚misc</a></div>
             <h1 class="post-title">
-                文件分割
+                文件头
             </h1>
 <div class="post-meta">
 
@@ -276,7 +276,7 @@ var _hmt = _hmt || [];
 <span class="parent-post-meta">
     <span id="post_meta_style_1">
         <span class="fa fa-calendar-check-o"></span>
-        <span>2023-04-26
+        <span>2023-05-03
             &nbsp;&nbsp;
         </span>
     </span>
@@ -289,13 +289,13 @@ var _hmt = _hmt || [];
     
     <span id="post_meta_style_3">
         <span class="fa fa-file-word-o"></span>
-        <span>177字
+        <span>664字
             &nbsp;&nbsp;
         </span>
     </span>
     <span id="post_meta_style_4">
         <span class="fa fa-clock-o"></span>
-        <span>1分钟
+        <span>2分钟
             &nbsp;&nbsp;
         </span>
     </span>
@@ -365,25 +365,69 @@ var _hmt = _hmt || [];
 
 </div>
         <div class="post-content"><p>​</p>
-<h1 id="文件分离工具及使用方法">文件分离工具及使用方法<a hidden class="anchor" aria-hidden="true" href="#文件分离工具及使用方法">#</a></h1>
-<h2 id="foremost">foremost<a hidden class="anchor" aria-hidden="true" href="#foremost">#</a></h2>
-<h4 id="基本命令">基本命令<a hidden class="anchor" aria-hidden="true" href="#基本命令">#</a></h4>
-<blockquote>
-<p>foremost 文件名</p>
-</blockquote>
-<p>执行命令后，会在当前文件夹生成output</p>
-<p>也可以直接把需要分离的文件拖到foremost，目前我的windows上比较难用，准备研究一下linux的用法</p>
-<h2 id="binwalk">binwalk<a hidden class="anchor" aria-hidden="true" href="#binwalk">#</a></h2>
-<p>工具使用</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#查看帮助
-</span></span><span style="display:flex;"><span>python -m binwalk -h
-</span></span><span style="display:flex;"><span>#分析文件
-</span></span><span style="display:flex;"><span>python -m binwalk 文件名
-</span></span><span style="display:flex;"><span>#提取文件
-</span></span><span style="display:flex;"><span>python -m binwalk -e 
-</span></span></code></pre></div><h2 id="wp">wp<a hidden class="anchor" aria-hidden="true" href="#wp">#</a></h2>
-<p>第一个文件是一个图片，很简单，就是基本的一个隐写，直接用foremost分离了就出来了。</p>
-<p>flag{E0D6DEE1-33F0-42E1-9609-ECDFFFE5276C}</p>
+<h1 id="文件头篇">文件头篇<a hidden class="anchor" aria-hidden="true" href="#文件头篇">#</a></h1>
+<h3 id="一文件头文件尾"><strong>一、文件头文件尾</strong><a hidden class="anchor" aria-hidden="true" href="#一文件头文件尾">#</a></h3>
+<h4 id="1图片"><strong>1、图片</strong><a hidden class="anchor" aria-hidden="true" href="#1图片">#</a></h4>
+<ul>
+<li><strong>JPEG</strong> 文件头：<code>FF D8 FF</code>  文件尾：<code>FF D9</code></li>
+<li>TGA 未压缩的前4字节 <code>00 00 02 00</code> RLE压缩的前5字节 <code>00 00 10 00 00</code></li>
+<li><strong>PNG</strong> 文件头：<code>89 50 4E 47 0D 0A 1A 0A</code>  文件尾：<code>AE 42 60 82</code></li>
+<li><strong>GIF</strong> 文件头：<code>47 49 46 38 39(37) 61</code>  文件尾：<code>00 3B</code></li>
+<li>BMP 文件头：<code>42 4D</code> 文件头标识(2 bytes) 42(B) 4D(M)</li>
+<li>TIFF (tif) 文件头：<code>49 49 2A 00</code></li>
+<li>ico 文件头：<code>00 00 01 00</code></li>
+<li>Adobe Photoshop (psd) 文件头：<code>38 42 50 53</code></li>
+</ul>
+<h4 id="2office文件"><strong>2、office文件</strong><a hidden class="anchor" aria-hidden="true" href="#2office文件">#</a></h4>
+<ul>
+<li>MS Word/Excel (xls.or.doc) 文件头：<code>D0 CF 11 E0</code></li>
+<li>MS Access (mdb) 文件头：<code>53 74 61 6E 64 61 72 64 20 4A</code></li>
+<li><strong>Word</strong>Perfect (wpd) 文件头：<code>FF 57 50 43</code></li>
+<li>Adobe Acrobat (pdf) 文件头：<code>25 50 44 46 2D 31 2E</code></li>
+<li>application/vnd.visio(vsd) 文件头：<code>D0 CF 11 E0 A1 B1 1A E1</code></li>
+<li>Email [thorough only] (eml) 文件头：<code>44 65 6C 69 76 65 72 79 2D 64 61 74 65 3A</code></li>
+<li>Outlook Express (dbx) 文件头：<code>CF AD 12 FE C5 FD 74 6F</code></li>
+<li>Outlook (pst) 文件头：<code>21 42 44 4E</code></li>
+<li>Rich Text Format (rtf) 文件头：<code>7B 5C 72 74 66</code></li>
+<li><strong>txt</strong> 文件(txt) 文件头：Unicode：<code>FE FF</code> / Unicode big endian：<code>FF FE</code> / UTF-8：<code>EF BB BF</code> /ANSI编码是没有文件头的</li>
+</ul>
+<h4 id="3压缩包文件"><strong>3、压缩包文件</strong><a hidden class="anchor" aria-hidden="true" href="#3压缩包文件">#</a></h4>
+<ul>
+<li><strong>ZIP</strong> Archive (zip) 文件头：<code>50 4B 03 04</code> 文件尾：<code>50 4B</code></li>
+<li><strong>RAR</strong> Archive (rar) 文件头：<code>52 61 72 21</code></li>
+</ul>
+<h4 id="4音频文件"><strong>4、音频文件</strong><a hidden class="anchor" aria-hidden="true" href="#4音频文件">#</a></h4>
+<ul>
+<li>Wave (wav) 文件头：<code>57 41 56 45</code></li>
+<li>audio(Audio) 文件头： <code>4D 54 68 64</code></li>
+<li>audio/x-aac（aac）</li>
+<li>文件头：<code>FF F1(9)</code></li>
+</ul>
+<h4 id="5视频文件"><strong>5、视频文件</strong><a hidden class="anchor" aria-hidden="true" href="#5视频文件">#</a></h4>
+<ul>
+<li>AVI (avi) 文件头：<code>41 56 49 20</code></li>
+<li>Real Audio (ram) 文件头：<code>2E 72 61 FD</code></li>
+<li>Real Media (rm) 文件头：<code>2E 52 4D 46</code></li>
+<li>MPEG (mpg) 文件头：<code>00 00 01 BA(3)</code></li>
+<li>Quicktime (mov) 文件头：<code>6D 6F 6F 76</code></li>
+<li>Windows Media (asf) 文件头：<code>30 26 B2 75 8E 66 CF 11</code></li>
+<li>MIDI (mid) 文件头：<code>4D 54 68 64</code></li>
+</ul>
+<h4 id="6代码文件"><strong>6、代码文件</strong><a hidden class="anchor" aria-hidden="true" href="#6代码文件">#</a></h4>
+<ul>
+<li>XML (xml) 文件头：<code>3C 3F 78 6D 6C</code></li>
+<li>HTML (html) 文件头：<code>68 74 6D 6C 3E</code></li>
+<li>Quicken (qdf) 文件头：<code>AC 9E BD 8F</code></li>
+<li>Windows Password (pwl) 文件头：<code>E3 82 85 96</code></li>
+</ul>
+<h4 id="7其他类型"><strong>7、其他类型</strong><a hidden class="anchor" aria-hidden="true" href="#7其他类型">#</a></h4>
+<ul>
+<li>windows证书文件(der) 文件头：<code>30 82 03 C9</code></li>
+<li>CAD (dwg) 文件头：<code>41 43 31 30</code></li>
+<li>Windows Shortcut (lnk) 文件头：<code>4C 00 00 00</code></li>
+<li>Windows reg(reg) 文件头：<code>52 45 47 45 44 49 54 34</code></li>
+</ul>
+<h3 id="压缩包隐写类">压缩包隐写类<a hidden class="anchor" aria-hidden="true" href="#压缩包隐写类">#</a></h3>
 
 
         </div>
@@ -391,15 +435,15 @@ var _hmt = _hmt || [];
         <footer class="post-footer">
             
 <nav class="paginav">
-  <a class="prev" href="https://modesty258.github.io/posts/misc/%E5%8E%8B%E7%BC%A9%E5%8C%85/">
+  <a class="prev" href="https://modesty258.github.io/posts/misc/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">
     <span class="title">« 上一页</span>
     <br>
-    <span>压缩包</span>
+    <span>图片隐写</span>
   </a>
-  <a class="next" href="https://modesty258.github.io/posts/blog/%E4%BD%BF%E7%94%A8git%E6%9B%B4%E6%96%B0hugo%E4%B8%AA%E4%BA%BAblog/">
+  <a class="next" href="https://modesty258.github.io/posts/misc/%E5%8E%8B%E7%BC%A9%E5%8C%85/">
     <span class="title">下一页 »</span>
     <br>
-    <span>使用git更新hugo个人blog</span>
+    <span>压缩包</span>
   </a>
 </nav>
 
