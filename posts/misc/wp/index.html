@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Wp | Modest&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="ctfshow的图片类题目">
+<meta name="author" content="Modest">
+<link rel="canonical" href="https://modesty258.github.io/posts/misc/wp/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://modesty258.github.io/img/Q.gif">
+<link rel="apple-touch-icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="mask-icon" href="https://modesty258.github.io/img/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script defer src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="Wp" />
+<meta property="og:description" content="ctfshow的图片类题目" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://modesty258.github.io/posts/misc/wp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-07T20:05:06+08:00" />
+<meta property="article:modified_time" content="2023-05-07T20:05:06+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wp"/>
+<meta name="twitter:description" content="ctfshow的图片类题目"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://modesty258.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "📚misc",
+          "item": "https://modesty258.github.io/posts/misc/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Wp",
+      "item": "https://modesty258.github.io/posts/misc/wp/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Wp",
+  "name": "Wp",
+  "description": "ctfshow的图片类题目",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "misc1 解压就行\nmisc2 解压一个文本文件，然后打开都是乱码，打开010看一下\n开头就是89 50可以知道了这是一个png文件，然后改为了txt后缀，把后缀改回来就可以了\nmisc3 解压完发现是一个bpg文件，没有什么技巧，直接查看就行了\nmisc4 这道题解压后有6个txt文件，和第二题一样，这道题也是文件后缀，只不过是6个，一个一个改了在进行拼接就行了\nmisc5 打开后显示flag不在这里，仔细找了下，在010中可以找到\nmisc6 和上一道题目一样，只不过不在结尾了，在中间，需要仔细找找\nmisc7 和上一道一样，需要搜一下\nmisc8 题目说在图片文件中，但是实在肉眼找不到，尝试用txt后缀，但是看不到，这时候使用到了binwalk等分离工具\nbinwalk看到文件其实还含有一张png文件，利用foremost分离\n文件就直接出来了，flag就在文件里面\nmisc9 看不懂，我出的时候感觉还是炒冷饭\nmisc10 找了找没找到，直接分离出来了，感觉还是炒冷饭\nmisc11 flag在另一张图，很明显的提示，用binwalk看了一眼，只有一个图片文件，还有一个bzip2文件，不知道该怎么处理\ntweakpng Irfanview图片隐写术 在杂项中，经常会遇到图片被修改，可能是尺寸，也有可能是其他的，但是默认的图片编辑器不会报错，但是专业的文件编辑器会报错，比如上面的两个，\n常见错误 crc错误\n这里有两种可能\n1）图片CRC被修改 可以尝试用十六进制编辑器打开图片，修改CRC。\n2）图片尺寸被修改 这时候就要用十六进制编辑器修改图片尺寸了。\n解决 对于还原尺寸，可以利用蒙一下，也可以用个脚本\nimport os import binascii import struct crcbp = open(\"xxx.png\", \"rb\").read() #打开图片 for i in range(2000): for j in range(2000): data = crcbp[12:16] + \\ struct.pack('\u003ei', i)+struct.pack('\u003ei', j)+crcbp[24:29] crc32 = binascii.crc32(data) \u0026 0xffffffff if(crc32 == 0x38162a34): #图片当前CRC print(i, j) print('hex:', hex(i), hex(j)) 使用时修改脚本中的打开图片名称和图片当前CRC\n然后在图片所在目录运行Python脚本\n再用010改一下就可以了\ntweakpng idat 当然这一题用的不是上面的，需要用到这个文件\n使用tweakpng打开文件，发现有两个idat文件头，这就说明有问题，\n默认的图片是以第一个idat块来显示，所以将下面的移上去，或者把第一个删除就可以了\n虽然不知道什么原理，将上面的删除了就会显示下面的idat数据头，可能是因为每个idat都对应一个图片，所以只能换一下，或者将下面的移到上面\nmisc12 和上一题一样，有很多idat块，只不过不知道哪一个才是，但是肯定知道最上面的不是，所以一个一个的删除，肯定有一个是\n在删除的过程中，发现中间的几个都是无效的，删到第八个的时候就出来了正确的\nmisc13 flag位置在图片末尾。\n打开010，能看出来图片中含有flag，但是被编码了\n分离了一下，里面估计没有txt文件了，还是尝试解码\nct¹f…s†hªoKw°{!aeS6¥eT446xc%4Ý8ïf«73•9b‚7ºeEb|2Td~1:däeñ6úeõ412fT8ñ329éal} 不是base，仔细一看，根本就没有编码，只是每两个之间用一个特殊字符隔开了，尝试用python来跑个脚本\na=\"c\u001at¹f…s†hªoKw°{!a\u0014eS6¥eT446xc%4Ý8ïf«7\u00103•9\u001fb‚7ºeEb|2Td~1:däeñ6úeõ4\u001e1\u00072\u001dfT8ñ329éal}\" flag=\"\" for i in range(0,len(a),2): hexStr=a[i] flag+=hexStr print(flag) ctfshow{ae6e46c48f739b7eb2d1de6e412f839a}\nctfshow{ae6e3ea48f518b7e42d7de6f412f839a}\nmisc14 dd 文件分离 binwalk分析一下，发现有两个文件，直接分离\n临时学习了个dd指令，用来分离文件：\ndd if=misc14.jpg of=1.png skip=2103 bs=1 if代表输入文件，of代表输出文件，skip代表跳过到多少个块后开始（binwalk可以看到），bs是代表字节为单位的块的大小，参数还有很多，目前先记住这几个就能分出图片了。\n这里由于binwalk查看到在2103个块开始还有一个JPEG文件，那就直接shkip到2103开始分离。\n成功得到flag。\n解法二 从binwalk可以看到里面有两个jpg文件，可以直接用010将另一个文件直接从里面提取出来，直接找到文件头FF D8，第三个就是我们需要的，直接复制出来生成一个新的文件就可以了\nmisc15 是一个bmp文件，拿binwalk分析了以下没看见啥有用的。\n直接搜，拿010\nmisc16 binwalk扫一下，发下确实有点东西，但是不懂，不像之前有图片文本来得那么直接\n诶，怎么说呢，有时候可能不一定没有txt就没有文本，可以用binwalk直接分离出来一个dd4，没错，就是他\nbinwalk tip 怎么说呢，以后遇见题目，即使没有你认识的文件，也要尝试分离一下，分离不出来就用foremost或者dd，或者其他的一些，总而言之只要里面不是一个文件，就分离出来再继续做\nzsteg 检测隐写 zsteg可以检测PNG和BMP图片里的隐写数据。\n目前，zsteg支持检测：\nPNG 和 BMP 格式的 LSB 隐写术 zlib 压缩数据 打开Stego Camouflage 1.2.1 LSB 还是转到分离工具去看用法吧\n这里先浅浅的使用一下\nmisc17 直接分析，里面还有一个bzip2\n因为直接用分离工具提取会将文件损坏，所以只好用zsteg工具\n直接用zsteg看一下隐藏文件，看到了16进制，但是并没有flag，\n直接用zsteg将隐藏文件提取到一个1.txt当中，打开再看，发现是乱码，再用binwalk分离一下就有了\n看了一下wp，发现当时用zsteg检测出来的extradata:0 ，是在这个里面存在隐藏数据，所以应该将这个文件给提取出来，所以就有了对应的命令 zsteg -E “extradata:0” misc17.png \u003e 1.txt\nmisc18 看题目要求就知道了，在图片的属性里面，就是不知道010能不能看出来试试\n嗯，010是有的，但是有一点，他得拼接，我认为还是属性方便\nctfshow{325d60c208f728ac17e5f02d4cf5a839}\nmisc19 ctfshow{dfdcf08038cd446a5eb50782f8d3605d}\n怎么说呢，属性不一定能找到，但是010一定可以找到\nexiftool简介 查看图片简介 这个软件能扫出来图片的作者，等属性信息，主机，评论什么的也可以直接显示出来，以后可以直接看一眼\n命令\nexiftool flie_name misc20 直接用exiftool找出来了图片的所有信息，基本有了\n这图片也太难看了。来自：西替爱抚秀大括号西九七九六四必一诶易西爱抚零六易一弟七九西二一弟弟诶弟五九三易四二大括号\n很显然了，这就是flag\nctfshow{c97964b1aecf06e1d79c21ddad593e42}\nmisc21 题目说是看序号，打开010看了一看，大概有思路了，首先题目给出了，在010中也看到了数字，应该是某种加密，再不济也是一个ascil\n然后用exif工具扫了一下，看到了编码方式Baseline DCT, Huffman coding就是霍夫曼编码，先复制出来，再解一下就ok了\nX Resolution: 3902939465 0xe8a22149 Y Resolution: 2371618619 0x8d5c073b X Position: 1082452817 0x4084eb51 Y Position: 2980145261 0xb1a1686d Serial Number: 686578285826597329 先把Serial Number进行进制转换，使用16进制转换到文本字符串，得到hex(X\u0026Ys)，经查询，他的意思是将下x，y的十进制转化为16进制，所以直接转就可以了\npython直接运行就可以了\ne8a221498d5c073b4084eb51b1a1686d，再套上壳\nmisc22 还是用exif扫了一下，找到了需要的东西，就是这个Binary data 18195 bytes, use -b option to extract\n看到这个是不是莫名的熟悉\n好吧，我放弃了\n根据这个就可以把他用zsteg给提出去，很神奇\nmisc23 很好，psd文件，不知道是啥，搜一哈，Photoshop\n算了，还是用exif吧\nctfshow{49520599-6932-e144-8f4b-dfd5873be5bc}\n嘻嘻嘻，出了，美美提交，焯，错了，好难的样子\n发现给的这一堆逼数没一点用，还是大佬wp\n时间戳 1997:09:22 02:17:02+08:00 874865822 3425649e\n2055:07:15 12:14:48+08:00\n2038:05:05 16:50:45+08:00\n1984:08:03 18:41:46+08:00\n利用在线网站转换一下，再转换成16进制，出来的就是了\nmisc41 文件结构 从这里开始，就来到一个新的篇章了，属于文件结构，就需要修改长宽高来判断了\nmisc24 flag在图片上面，就说明这个图片的高度不够，需要修改高度\n通过图片的数据块可以知道图片的宽高在哪里修改，只需要修改高度就可以出来了\n将高度处的96改为FA就可以得出来了\nmisc25 首先，这时候最好用kali或者tweakpng打开文件，因为这种隐藏宽高的图片一般是看不出来修改的痕迹，专业工具会更好看出来，比如这一个，就是一个crc的错误，在上面的misc11有，直接还原就可以了\n修改高度的话可以和上一题一样，就可以得到flag了\nmisc26 这个说在多下面，我管你多下面，我直接改成FA(250)，你还能有多下面,好吧，真的比这个还下面，我只好改为56ce(22222)了，出了，但是没有完全出\ncftshow{94aef1+True height(hex) of this picture+087a7ccf2e28e742efd704c} 这一道题需要得到正确的高度并且结合得到flag，出题人，你是个狠人呀。\n这时候就得上脚本跑出来正确的高度了\nimport os import binascii import struct crcbp = open(\"misc26.png\", \"rb\").read() #打开图片 for i in range(2000): for j in range(2000): data = crcbp[12:16] + \\ struct.pack('\u003ei', i)+struct.pack('\u003ei', j)+crcbp[24:29] crc32 = binascii.crc32(data) \u0026 0xffffffff if(crc32 == 0xEC9CCBC6): #图片当前CRC print(i, j) print('hex:', hex(i), hex(j)) 先找到crc32值\n这个是在图片的后面，先把5个字节跳过去，然后后面的4个字节就是就是crc32的值，带进去爆破出来就可以了。\n然后再代入hex函数\n",
+  "wordCount" : "3369",
+  "inLanguage": "en",
+  "datePublished": "2023-05-07T20:05:06+08:00",
+  "dateModified": "2023-05-07T20:05:06+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Modest"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://modesty258.github.io/posts/misc/wp/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Modest's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://modesty258.github.io/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://modesty258.github.io/" accesskey="h" title="Modest&#39;s Blog (Alt + H)">
+            <img src="https://modesty258.github.io/img/Q.gif" alt="logo" aria-label="logo"
+                 height="35">Modest&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://modesty258.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/links" title="🤝 友链">
+                <span>🤝 友链</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+</style>
+
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://modesty258.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/misc/">📚misc</a></div>
+            <h1 class="post-title">
+                Wp
+            </h1>
+            <div class="post-description">
+                ctfshow的图片类题目
+            </div>
+<div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-05-07
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>3369字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>7分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>Modest
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+            </span>
+        </span>
+    </span>
+</span>
+
+    &nbsp;|&nbsp;标签: &nbsp;
+    <ul class="post-tags-meta">
+    </ul>
+
+    
+    
+    
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_page_pv">
+        &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+    </span>
+
+    
+    
+    
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
+    </script>
+    <script>
+        let url = document.documentURI
+        
+        let dnsUrl = "https://modesty258.github.io/"
+        let urlSplit = url.split(dnsUrl)
+        let finalUrl = urlSplit[1]
+        if (finalUrl[0] !== '/') {
+            finalUrl = '/'+finalUrl
+        }
+        twikoo.getCommentsCount({
+            envId:  null ,
+            region:  null ,
+            urls: [
+                finalUrl,
+            ],
+            includeReply: false 
+        }).then(function (res) {
+            let count = res[0].count
+            const obj = document.getElementById("comment_count");
+            obj.innerText = count
+            
+            
+            
+        }).catch(function (err) {
+            
+            console.error(err);
+        });
+    </script>
+    &nbsp;| 评论: &nbsp; <span id="comment_count"></span>
+
+</div>
+        <div class="post-content"><h2 id="misc1">misc1<a hidden class="anchor" aria-hidden="true" href="#misc1">#</a></h2>
+<p>解压就行</p>
+<h2 id="misc2">misc2<a hidden class="anchor" aria-hidden="true" href="#misc2">#</a></h2>
+<p>解压一个文本文件，然后打开都是乱码，打开010看一下</p>
+<p>开头就是89 50可以知道了这是一个png文件，然后改为了txt后缀，把后缀改回来就可以了</p>
+<h2 id="misc3">misc3<a hidden class="anchor" aria-hidden="true" href="#misc3">#</a></h2>
+<p>解压完发现是一个bpg文件，没有什么技巧，直接查看就行了</p>
+<h2 id="misc4">misc4<a hidden class="anchor" aria-hidden="true" href="#misc4">#</a></h2>
+<p>这道题解压后有6个txt文件，和第二题一样，这道题也是文件后缀，只不过是6个，一个一个改了在进行拼接就行了</p>
+<h2 id="misc5">misc5<a hidden class="anchor" aria-hidden="true" href="#misc5">#</a></h2>
+<p>打开后显示flag不在这里，仔细找了下，在010中可以找到</p>
+<h2 id="misc6">misc6<a hidden class="anchor" aria-hidden="true" href="#misc6">#</a></h2>
+<p>和上一道题目一样，只不过不在结尾了，在中间，需要仔细找找</p>
+<h2 id="misc7">misc7<a hidden class="anchor" aria-hidden="true" href="#misc7">#</a></h2>
+<p>和上一道一样，需要搜一下</p>
+<h2 id="misc8">misc8<a hidden class="anchor" aria-hidden="true" href="#misc8">#</a></h2>
+<p>题目说在图片文件中，但是实在肉眼找不到，尝试用txt后缀，但是看不到，这时候使用到了binwalk等分离工具</p>
+<p>binwalk看到文件其实还含有一张png文件，利用foremost分离</p>
+<p>文件就直接出来了，flag就在文件里面</p>
+<h2 id="misc9">misc9<a hidden class="anchor" aria-hidden="true" href="#misc9">#</a></h2>
+<p>看不懂，我出的时候感觉还是炒冷饭</p>
+<h2 id="misc10">misc10<a hidden class="anchor" aria-hidden="true" href="#misc10">#</a></h2>
+<p>找了找没找到，直接分离出来了，感觉还是炒冷饭</p>
+<h2 id="misc11">misc11<a hidden class="anchor" aria-hidden="true" href="#misc11">#</a></h2>
+<p>flag在另一张图，很明显的提示，用binwalk看了一眼，只有一个图片文件，还有一个bzip2文件，不知道该怎么处理</p>
+<h3 id="tweakpng-httpsctfshowwriteups841466-irfanview图片隐写术"><a href="https://ctf.show/writeups/841466">tweakpng </a> Irfanview图片隐写术<a hidden class="anchor" aria-hidden="true" href="#tweakpng-httpsctfshowwriteups841466-irfanview图片隐写术">#</a></h3>
+<p>在杂项中，经常会遇到图片被修改，可能是尺寸，也有可能是其他的，但是默认的图片编辑器不会报错，但是专业的文件编辑器会报错，比如上面的两个，</p>
+<h4 id="常见错误">常见错误<a hidden class="anchor" aria-hidden="true" href="#常见错误">#</a></h4>
+<p><strong>crc错误</strong></p>
+<p>这里有两种可能</p>
+<h4 id="1图片crc被修改">1）图片CRC被修改<a hidden class="anchor" aria-hidden="true" href="#1图片crc被修改">#</a></h4>
+<p>可以尝试用十六进制编辑器打开图片，修改CRC。</p>
+<h4 id="2图片尺寸被修改">2）图片尺寸被修改<a hidden class="anchor" aria-hidden="true" href="#2图片尺寸被修改">#</a></h4>
+<p>这时候就要用十六进制编辑器修改图片尺寸了。</p>
+<h5 id="解决">解决<a hidden class="anchor" aria-hidden="true" href="#解决">#</a></h5>
+<p>对于还原尺寸，可以利用蒙一下，也可以用个脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> binascii
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crcbp <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;xxx.png&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()    <span style="color:#75715e">#打开图片</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> crcbp[<span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">16</span>] <span style="color:#f92672">+</span> \
+</span></span><span style="display:flex;"><span>            struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;&gt;i&#39;</span>, i)<span style="color:#f92672">+</span>struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;&gt;i&#39;</span>, j)<span style="color:#f92672">+</span>crcbp[<span style="color:#ae81ff">24</span>:<span style="color:#ae81ff">29</span>]
+</span></span><span style="display:flex;"><span>        crc32 <span style="color:#f92672">=</span> binascii<span style="color:#f92672">.</span>crc32(data) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffffffff</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(crc32 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x38162a34</span>):    <span style="color:#75715e">#图片当前CRC</span>
+</span></span><span style="display:flex;"><span>            print(i, j)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;hex:&#39;</span>, hex(i), hex(j))
+</span></span></code></pre></div><p>使用时修改脚本中的打开图片名称和图片当前CRC</p>
+<p>然后在图片所在目录运行Python脚本</p>
+<p>再用010改一下就可以了</p>
+<h1 id="tweakpng--idat">tweakpng  idat<a hidden class="anchor" aria-hidden="true" href="#tweakpng--idat">#</a></h1>
+<p><strong>当然这一题用的不是上面的，需要用到这个文件</strong></p>
+<p>使用tweakpng打开文件，发现有两个idat文件头，这就说明有问题，</p>
+<p><strong>默认的图片是以第一个idat块来显示</strong>，所以将下面的移上去，或者把第一个删除就可以了</p>
+<p>虽然不知道什么原理，将上面的删除了就会显示下面的idat数据头，可能是因为每个idat都对应一个图片，所以只能换一下，或者将下面的移到上面</p>
+<h2 id="misc12">misc12<a hidden class="anchor" aria-hidden="true" href="#misc12">#</a></h2>
+<p>和上一题一样，有很多idat块，只不过不知道哪一个才是，但是肯定知道最上面的不是，所以一个一个的删除，肯定有一个是</p>
+<p>在删除的过程中，发现中间的几个都是无效的，删到第八个的时候就出来了正确的</p>
+<h2 id="misc13">misc13<a hidden class="anchor" aria-hidden="true" href="#misc13">#</a></h2>
+<blockquote>
+<p><strong>flag位置在图片末尾。</strong></p>
+</blockquote>
+<p>打开010，能看出来图片中含有flag，但是被编码了</p>
+<p>分离了一下，里面估计没有txt文件了，还是尝试解码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ct¹f…s†hªoKw°{!aeS6¥eT446xc%4Ý8ïf«73•9b‚7ºeEb|2Td~1:däeñ6úeõ412fT8ñ329éal}
+</span></span></code></pre></div><p>不是base，仔细一看，根本就没有编码，只是每两个之间用一个特殊字符隔开了，尝试用python来跑个脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ct¹f…s†hªoKw°{!aeS6¥eT446xc%4Ý8ïf«73•9b‚7ºeEb|2Td~1:däeñ6úeõ412fT8ñ329éal}&#34;</span>
+</span></span><span style="display:flex;"><span>flag<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(a),<span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>	hexStr<span style="color:#f92672">=</span>a[i]
+</span></span><span style="display:flex;"><span>	flag<span style="color:#f92672">+=</span>hexStr
+</span></span><span style="display:flex;"><span>print(flag)
+</span></span></code></pre></div><p><code> ctfshow{ae6e46c48f739b7eb2d1de6e412f839a}</code></p>
+<p>ctfshow{ae6e3ea48f518b7e42d7de6f412f839a}</p>
+<h2 id="misc14">misc14<a hidden class="anchor" aria-hidden="true" href="#misc14">#</a></h2>
+<h1 id="dd--文件分离">dd  文件分离<a hidden class="anchor" aria-hidden="true" href="#dd--文件分离">#</a></h1>
+<p>binwalk分析一下，发现有两个文件，直接分离</p>
+<p>临时学习了个<strong>dd</strong>指令，用来分离文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>dd if=misc14.jpg of=1.png skip=2103 bs=1
+</span></span></code></pre></div><p>if代表输入文件，of代表输出文件，skip代表跳过到多少个块后开始（binwalk可以看到），bs是代表字节为单位的块的大小，参数还有很多，目前先记住这几个就能分出图片了。</p>
+<p>这里由于binwalk查看到在2103个块开始还有一个JPEG文件，那就直接shkip到2103开始分离。</p>
+<p>成功得到flag。</p>
+<h4 id="解法二">解法二<a hidden class="anchor" aria-hidden="true" href="#解法二">#</a></h4>
+<p>从binwalk可以看到里面有两个jpg文件，可以直接用010将另一个文件直接从里面提取出来，直接找到文件头FF D8，第三个就是我们需要的，直接复制出来生成一个新的文件就可以了</p>
+<p><img loading="lazy" src="C:%5cUsers%5cAdministrator%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20230508120609848.png" alt="image-20230508120609848"  />
+</p>
+<h2 id="misc15">misc15<a hidden class="anchor" aria-hidden="true" href="#misc15">#</a></h2>
+<p>是一个bmp文件，拿binwalk分析了以下没看见啥有用的。</p>
+<p>直接搜，拿010</p>
+<h2 id="misc16">misc16<a hidden class="anchor" aria-hidden="true" href="#misc16">#</a></h2>
+<p>binwalk扫一下，发下确实有点东西，但是不懂，不像之前有图片文本来得那么直接</p>
+<p>诶，怎么说呢，有时候可能不一定没有txt就没有文本，可以用binwalk直接分离出来一个dd4，没错，就是他</p>
+<h2 id="binwalk-tip">binwalk tip<a hidden class="anchor" aria-hidden="true" href="#binwalk-tip">#</a></h2>
+<p>怎么说呢，以后遇见题目，即使没有你认识的文件，也要尝试分离一下，分离不出来就用foremost或者dd，或者其他的一些，<strong>总而言之只要里面不是一个文件，就分离出来再继续做</strong></p>
+<h1 id="zsteg---检测隐写">zsteg   检测隐写<a hidden class="anchor" aria-hidden="true" href="#zsteg---检测隐写">#</a></h1>
+<p>zsteg可以检测PNG和BMP图片里的隐写数据。</p>
+<p>目前，zsteg支持检测：</p>
+<ul>
+<li>PNG 和 BMP 格式的 LSB 隐写术</li>
+<li>zlib 压缩数据</li>
+<li><a href="http://openstego.sourceforge.net/">打开Stego</a></li>
+<li>Camouflage 1.2.1</li>
+<li>LSB</li>
+</ul>
+<p><strong>还是转到分离工具去看用法吧</strong></p>
+<p>这里先浅浅的使用一下</p>
+<h2 id="misc17">misc17<a hidden class="anchor" aria-hidden="true" href="#misc17">#</a></h2>
+<p>直接分析，里面还有一个bzip2</p>
+<p>因为直接用分离工具提取会将文件损坏，所以只好用zsteg工具</p>
+<p>直接用zsteg看一下隐藏文件，看到了16进制，但是并没有flag，</p>
+<p>直接用zsteg将隐藏文件提取到一个1.txt当中，打开再看，发现是乱码，再用binwalk分离一下就有了</p>
+<p><strong>看了一下</strong>wp，发现当时用zsteg检测出来的<strong>extradata:0</strong> ，是在这个里面存在隐藏数据，所以应该将这个文件给提取出来，所以就有了对应的命令<code>   zsteg -E “extradata:0” misc17.png &gt; 1.txt</code></p>
+<h2 id="misc18">misc18<a hidden class="anchor" aria-hidden="true" href="#misc18">#</a></h2>
+<p>看题目要求就知道了，在图片的属性里面，就是不知道010能不能看出来试试</p>
+<p>嗯，010是有的，但是有一点，他得拼接，我认为还是属性方便</p>
+<blockquote>
+<p>ctfshow{325d60c208f728ac17e5f02d4cf5a839}</p>
+</blockquote>
+<h2 id="misc19">misc19<a hidden class="anchor" aria-hidden="true" href="#misc19">#</a></h2>
+<p>ctfshow{dfdcf08038cd446a5eb50782f8d3605d}</p>
+<p>怎么说呢，属性不一定能找到，但是010一定可以找到</p>
+<h1 id="exiftool简介-查看图片简介">exiftool简介 查看图片简介<a hidden class="anchor" aria-hidden="true" href="#exiftool简介-查看图片简介">#</a></h1>
+<p>这个软件能扫出来图片的作者，等属性信息，主机，评论什么的也可以直接显示出来，以后可以直接看一眼</p>
+<p>命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>exiftool flie_name
+</span></span></code></pre></div><h2 id="misc20">misc20<a hidden class="anchor" aria-hidden="true" href="#misc20">#</a></h2>
+<p>直接用exiftool找出来了图片的所有信息，基本有了</p>
+<blockquote>
+<p>这图片也太难看了。来自：西替爱抚秀大括号西九七九六四必一诶易西爱抚零六易一弟七九西二一弟弟诶弟五九三易四二大括号</p>
+</blockquote>
+<p>很显然了，这就是flag</p>
+<p>ctfshow{c97964b1aecf06e1d79c21ddad593e42}</p>
+<h2 id="misc21">misc21<a hidden class="anchor" aria-hidden="true" href="#misc21">#</a></h2>
+<p>题目说是看序号，打开010看了一看，大概有思路了，首先题目给出了，在010中也看到了数字，应该是某种加密，再不济也是一个ascil</p>
+<p>然后用exif工具扫了一下，看到了编码方式<strong>Baseline DCT, Huffman coding</strong>就是霍夫曼编码，先复制出来，再解一下就ok了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>X Resolution: 3902939465     0xe8a22149
+</span></span><span style="display:flex;"><span>Y Resolution: 2371618619 	 0x8d5c073b
+</span></span><span style="display:flex;"><span>X Position: 1082452817       0x4084eb51
+</span></span><span style="display:flex;"><span>Y Position: 2980145261       0xb1a1686d
+</span></span><span style="display:flex;"><span>Serial Number: 686578285826597329
+</span></span></code></pre></div><p>先把Serial Number进行进制转换，使用16进制转换到文本字符串，得到hex(X&amp;Ys)，经查询，他的意思是将下x，y的十进制转化为16进制，所以直接转就可以了</p>
+<p>python直接运行就可以了</p>
+<p>e8a221498d5c073b4084eb51b1a1686d，再套上壳</p>
+<h2 id="misc22">misc22<a hidden class="anchor" aria-hidden="true" href="#misc22">#</a></h2>
+<p>还是用exif扫了一下，找到了需要的东西，就是这个<strong>Binary data 18195 bytes, use -b option to extract</strong></p>
+<p>看到这个是不是莫名的熟悉</p>
+<p>好吧，我放弃了</p>
+<p>根据这个就可以把他用zsteg给提出去，很神奇</p>
+<h2 id="misc23">misc23<a hidden class="anchor" aria-hidden="true" href="#misc23">#</a></h2>
+<p>很好，psd文件，不知道是啥，搜一哈，Photoshop</p>
+<p>算了，还是用exif吧</p>
+<p>ctfshow{49520599-6932-e144-8f4b-dfd5873be5bc}</p>
+<p>嘻嘻嘻，出了，美美提交，焯，错了，好难的样子</p>
+<p>发现给的这一堆逼数没一点用，还是大佬wp</p>
+<h3 id="时间戳">时间戳<a hidden class="anchor" aria-hidden="true" href="#时间戳">#</a></h3>
+<blockquote>
+<p>1997:09:22 02:17:02+08:00   874865822  3425649e</p>
+<p>2055:07:15 12:14:48+08:00</p>
+<p>2038:05:05 16:50:45+08:00</p>
+<p>1984:08:03 18:41:46+08:00</p>
+</blockquote>
+<p>利用在线网站转换一下，再转换成16进制，出来的就是了</p>
+<h2 id="misc41">misc41<a hidden class="anchor" aria-hidden="true" href="#misc41">#</a></h2>
+<h1 id="文件结构">文件结构<a hidden class="anchor" aria-hidden="true" href="#文件结构">#</a></h1>
+<p>从这里开始，就来到一个新的篇章了，属于文件结构，就需要修改长宽高来判断了</p>
+<h2 id="misc24">misc24<a hidden class="anchor" aria-hidden="true" href="#misc24">#</a></h2>
+<p>flag在图片上面，就说明这个图片的高度不够，需要修改高度</p>
+<p>通过图片的数据块可以知道图片的宽高在哪里修改，只需要修改高度就可以出来了</p>
+<p>将高度处的96改为FA就可以得出来了</p>
+<h2 id="misc25">misc25<a hidden class="anchor" aria-hidden="true" href="#misc25">#</a></h2>
+<p>首先，这时候最好用kali或者tweakpng打开文件，因为这种隐藏宽高的图片一般是看不出来修改的痕迹，专业工具会更好看出来，比如这一个，就是一个crc的错误，在上面的misc11有，直接还原就可以了</p>
+<p>修改高度的话可以和上一题一样，就可以得到flag了</p>
+<h2 id="misc26">misc26<a hidden class="anchor" aria-hidden="true" href="#misc26">#</a></h2>
+<p>这个说在多下面，我管你多下面，我直接改成FA(250)，你还能有多下面,好吧，真的比这个还下面，我只好改为56ce(22222)了，出了，但是没有完全出</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cftshow{<span style="color:#ae81ff">94</span>aef1<span style="color:#f92672">+</span><span style="color:#66d9ef">True</span> height(hex) of this picture<span style="color:#f92672">+</span><span style="color:#ae81ff">087</span>a7ccf2e28e742efd704c}
+</span></span></code></pre></div><p>这一道题需要得到正确的高度并且结合得到flag，出题人，你是个狠人呀。</p>
+<p>这时候就得上脚本跑出来正确的高度了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> binascii
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> struct
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>crcbp <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;misc26.png&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()    <span style="color:#75715e">#打开图片</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+</span></span><span style="display:flex;"><span>        data <span style="color:#f92672">=</span> crcbp[<span style="color:#ae81ff">12</span>:<span style="color:#ae81ff">16</span>] <span style="color:#f92672">+</span> \
+</span></span><span style="display:flex;"><span>            struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;&gt;i&#39;</span>, i)<span style="color:#f92672">+</span>struct<span style="color:#f92672">.</span>pack(<span style="color:#e6db74">&#39;&gt;i&#39;</span>, j)<span style="color:#f92672">+</span>crcbp[<span style="color:#ae81ff">24</span>:<span style="color:#ae81ff">29</span>]
+</span></span><span style="display:flex;"><span>        crc32 <span style="color:#f92672">=</span> binascii<span style="color:#f92672">.</span>crc32(data) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffffffff</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(crc32 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0xEC9CCBC6</span>):    <span style="color:#75715e">#图片当前CRC</span>
+</span></span><span style="display:flex;"><span>            print(i, j)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;hex:&#39;</span>, hex(i), hex(j))
+</span></span></code></pre></div><p>先找到crc32值</p>
+<p>这个是在图片的后面，先把5个字节跳过去，然后后面的4个字节就是就是crc32的值，带进去爆破出来就可以了。</p>
+<p>然后再代入hex函数</p>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="prev" href="https://modesty258.github.io/posts/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>基础语法</span>
+  </a>
+  <a class="next" href="https://modesty258.github.io/posts/misc/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>图片隐写</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+
+<style>
+    .comments_details summary::marker {
+        font-size: 20px;
+        content: '👉展开评论';
+        color: var(--content);
+    }
+    .comments_details[open] summary::marker{
+        font-size: 20px;
+        content: '👇关闭评论';
+        color: var(--content);
+    }
+</style>
+
+
+<div>
+    <details class="comments_details">
+        <summary style="cursor: pointer; margin: 50px 0 20px 0;width: 130px;">
+            <span style="font-size: 20px;color: var(--content);">...</span>
+        </summary>
+        <div id="tcomment"></div>
+    </details>
+    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
+    </script>
+    <script>
+        twikoo.init({
+            envId:  null ,
+        el: "#tcomment",
+            lang: 'zh-CN',
+            region:  null ,
+        path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        })
+    </script>
+</div>
+</article>
+</main>
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://modesty258.github.io/" style="color:#939393;">Modest&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;"></a>&nbsp;
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="" style="float:left;margin: 0px 5px 0px 0px;"/>
+            
+        </a>
+    </span>
+    <span id="busuanzi_container">
+        <span class="fa fa-user"></span> <span id="busuanzi_value_site_uv"></span>
+        <span class="fa fa-eye"></span> <span id="busuanzi_value_site_pv"></span>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {}
+            selection.removeRange(range);
+        });
+
+        let language = codeblock.className.replaceAll("language-", "")
+        let macTool = document.createElement("div")
+        let macTool1 = document.createElement("div")
+        let macTool2 = document.createElement("div")
+        let macTool3 = document.createElement("div")
+        let languageType = document.createElement("div")
+        languageType.innerText = language
+        macTool.setAttribute('class', 'mac-tool')
+        macTool1.setAttribute('class', 'mac bb1')
+        macTool2.setAttribute('class', 'mac bb2')
+        macTool3.setAttribute('class', 'mac bb3')
+        languageType.setAttribute('class', 'language-type')
+        macTool.appendChild(macTool1)
+        macTool.appendChild(macTool2)
+        macTool.appendChild(macTool3)
+        macTool.appendChild(languageType)
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        }
+    });
+</script>
+
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+            $(this).css("border-top-right-radius", "var(--radius)")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+        $(this).css("border-top-right-radius", "unset")
+    })
+</script>
+</body>
+
+</html>

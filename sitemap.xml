@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://modesty258.github.io/posts/misc/</loc>
-    <lastmod>2023-05-04T21:06:52+08:00</lastmod>
-  </url><url>
     <loc>https://modesty258.github.io/posts/</loc>
-    <lastmod>2023-05-04T21:06:52+08:00</lastmod>
+    <lastmod>2023-05-08T11:00:53+08:00</lastmod>
   </url><url>
     <loc>https://modesty258.github.io/</loc>
-    <lastmod>2023-05-04T21:06:52+08:00</lastmod>
+    <lastmod>2023-05-08T11:00:53+08:00</lastmod>
+  </url><url>
+    <loc>https://modesty258.github.io/posts/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2023-05-08T11:00:53+08:00</lastmod>
+  </url><url>
+    <loc>https://modesty258.github.io/posts/misc/</loc>
+    <lastmod>2023-05-07T20:05:06+08:00</lastmod>
+  </url><url>
+    <loc>https://modesty258.github.io/posts/misc/wp/</loc>
+    <lastmod>2023-05-07T20:05:06+08:00</lastmod>
   </url><url>
     <loc>https://modesty258.github.io/posts/misc/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/</loc>
     <lastmod>2023-05-04T21:06:52+08:00</lastmod>
