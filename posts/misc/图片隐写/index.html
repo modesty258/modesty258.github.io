@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
             <h1 class="post-title">
                 图片隐写
             </h1>
-<div class="post-meta">
+            <div class="post-meta">
 
 <style>
     i[id*="post_meta_style"] {
@@ -313,57 +313,154 @@ var _hmt = _hmt || [];
         </span>
     </span>
 </span>
-
-    &nbsp;|&nbsp;标签: &nbsp;
-    <ul class="post-tags-meta">
-    </ul>
-
-    
-    
-    
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_page_pv">
-        &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-    </span>
-
-    
-    
-    
-    
-    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
-    </script>
-    <script>
-        let url = document.documentURI
-        
-        let dnsUrl = "https://modesty258.github.io/"
-        let urlSplit = url.split(dnsUrl)
-        let finalUrl = urlSplit[1]
-        if (finalUrl[0] !== '/') {
-            finalUrl = '/'+finalUrl
-        }
-        twikoo.getCommentsCount({
-            envId:  null ,
-            region:  null ,
-            urls: [
-                finalUrl,
-            ],
-            includeReply: false 
-        }).then(function (res) {
-            let count = res[0].count
-            const obj = document.getElementById("comment_count");
-            obj.innerText = count
-            
-            
-            
-        }).catch(function (err) {
-            
-            console.error(err);
-        });
-    </script>
-    &nbsp;| 评论: &nbsp; <span id="comment_count"></span>
+<span style="opacity: 0.8;">
+                    <span id="post_meta_style_7">
+                        &nbsp;&nbsp;
+                        <span class="fa fa-eye" ></span>
+                        <span>
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+                            &nbsp;&nbsp;
+                        </span>
+                    </span>
+                    <span id="post_meta_style_8">
+                        <span class="fa fa-commenting-o"></span>
+                        <span>
+                            <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js"></script>
+                            <script>
+                                let url = document.documentURI
+                                
+                                let dnsUrl = "https://modesty258.github.io/"
+                                let urlSplit = url.split(dnsUrl)
+                                let finalUrl = urlSplit[1]
+                                if (finalUrl[0] !== '/') {
+                                    finalUrl = '/'+finalUrl
+                                }
+                                twikoo.getCommentsCount({
+                                    envId:  null , 
+                                region:  null , 
+                                urls: [ 
+                                    
+                                    finalUrl,
+                                ],
+                                    includeReply: false 
+                                }).then(function (res) {
+                                    let count = res[0].count
+                                    const obj = document.getElementById("comment_count");
+                                    obj.innerText = count
+                                    
+                                    
+                                    
+                                }).catch(function (err) {
+                                    
+                                    console.error(err);
+                                });
+                            </script>
+                            <span id="comment_count"></span>
+                        </span>
+                    </span>
+                </span>
 
 </div>
+        </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">文章目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%9b%be%e7%89%87%e9%9a%90%e5%86%99%e6%9c%af" aria-label="图片隐写术">图片隐写术</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%85%83%e6%95%b0%e6%8d%ae%e9%9a%90%e5%86%99" aria-label="元数据隐写">元数据隐写</a><ul>
+                            
+                    <li>
+                        <a href="#png%e5%9b%be%e7%89%87" aria-label="png图片">png图片</a><ul>
+                            
+                    <li>
+                        <a href="#ihdr" aria-label="IHDR">IHDR</a><ul>
+                            
+                    <li>
+                        <a href="#wp" aria-label="wp">wp</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#idat%e5%9b%be%e5%83%8f%e6%95%b0%e6%8d%ae%e5%9d%97" aria-label="IDAT（图像数据块）"><strong>IDAT（图像数据块）</strong></a></li>
+                    <li>
+                        <a href="#iend" aria-label="IEND"><strong>IEND</strong></a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#lsb%e9%9a%90%e5%86%99" aria-label="lsb隐写">lsb隐写</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
         <div class="post-content"><h2 id="图片隐写术">图片隐写术<a hidden class="anchor" aria-hidden="true" href="#图片隐写术">#</a></h2>
 <h3 id="元数据隐写">元数据隐写<a hidden class="anchor" aria-hidden="true" href="#元数据隐写">#</a></h3>
 <p>隐藏在图片的属性中，一般直接属性查看，或者用命令</p>
@@ -393,12 +490,12 @@ var _hmt = _hmt || [];
 <h4 id="lsb隐写">lsb隐写<a hidden class="anchor" aria-hidden="true" href="#lsb隐写">#</a></h4>
 <p>LSB隐写，也就是最低有效位，图片中的像数一般是由三原色组成，这三原色也可以组成别的颜色。在png图片的存储中，每个颜色会有8bit，LSB隐写就是修改像数中最低的1bit，写入加密信息</p>
 <p>三原色为红蓝绿，每个颜色的二进制都为八位，那么转化为十进制就有256种，这三种的随机组合就有256的三次方，达到了很多位，正常眼睛就无法识别，那么就可以修改最低的二进制位然后来隐藏信息，最多可以隐藏3bit的信息而使图片没有变化(人眼无法识别)</p>
-<p><img loading="lazy" src="https://segmentfault.com/img/bVbgeGG?w=865&amp;h=331" alt="图片描述"  />
+<p><img loading="lazy" src="/img/13.png" alt="img"  />
 </p>
 <p>上图我们可以看到，十进制的235表示的是绿色，我们修改了在二进制中的最低位，但是颜色看起来依旧没有变化。我们就可以修改最低位中的信息，实现信息的隐写。我修改最低有效位的信息的算法就叫做lsb加密算法，提取最低有效位信息的算法叫做lsb解密算法</p>
-<p><img loading="lazy" src="https://segmentfault.com/img/bVbgeGI?w=675&amp;h=227" alt="图片描述"  />
+<p><img loading="lazy" src="/img/123.png" alt="img"  />
 </p>
-<p><img loading="lazy" src="https://segmentfault.com/img/bVbgeGK?w=624&amp;h=332" alt="图片描述"  />
+<p><img loading="lazy" src="/img/32.png" alt="img"  />
 </p>
 
 

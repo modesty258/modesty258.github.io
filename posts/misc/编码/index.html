@@ -260,7 +260,7 @@ var _hmt = _hmt || [];
             <div class="post-description">
                 一些常见编码，以及部分题目
             </div>
-<div class="post-meta">
+            <div class="post-meta">
 
 <style>
     i[id*="post_meta_style"] {
@@ -316,57 +316,193 @@ var _hmt = _hmt || [];
         </span>
     </span>
 </span>
-
-    &nbsp;|&nbsp;标签: &nbsp;
-    <ul class="post-tags-meta">
-    </ul>
-
-    
-    
-    
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_page_pv">
-        &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-    </span>
-
-    
-    
-    
-    
-    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
-    </script>
-    <script>
-        let url = document.documentURI
-        
-        let dnsUrl = "https://modesty258.github.io/"
-        let urlSplit = url.split(dnsUrl)
-        let finalUrl = urlSplit[1]
-        if (finalUrl[0] !== '/') {
-            finalUrl = '/'+finalUrl
-        }
-        twikoo.getCommentsCount({
-            envId:  null ,
-            region:  null ,
-            urls: [
-                finalUrl,
-            ],
-            includeReply: false 
-        }).then(function (res) {
-            let count = res[0].count
-            const obj = document.getElementById("comment_count");
-            obj.innerText = count
-            
-            
-            
-        }).catch(function (err) {
-            
-            console.error(err);
-        });
-    </script>
-    &nbsp;| 评论: &nbsp; <span id="comment_count"></span>
+<span style="opacity: 0.8;">
+                    <span id="post_meta_style_7">
+                        &nbsp;&nbsp;
+                        <span class="fa fa-eye" ></span>
+                        <span>
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+                            &nbsp;&nbsp;
+                        </span>
+                    </span>
+                    <span id="post_meta_style_8">
+                        <span class="fa fa-commenting-o"></span>
+                        <span>
+                            <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js"></script>
+                            <script>
+                                let url = document.documentURI
+                                
+                                let dnsUrl = "https://modesty258.github.io/"
+                                let urlSplit = url.split(dnsUrl)
+                                let finalUrl = urlSplit[1]
+                                if (finalUrl[0] !== '/') {
+                                    finalUrl = '/'+finalUrl
+                                }
+                                twikoo.getCommentsCount({
+                                    envId:  null , 
+                                region:  null , 
+                                urls: [ 
+                                    
+                                    finalUrl,
+                                ],
+                                    includeReply: false 
+                                }).then(function (res) {
+                                    let count = res[0].count
+                                    const obj = document.getElementById("comment_count");
+                                    obj.innerText = count
+                                    
+                                    
+                                    
+                                }).catch(function (err) {
+                                    
+                                    console.error(err);
+                                });
+                            </script>
+                            <span id="comment_count"></span>
+                        </span>
+                    </span>
+                </span>
 
 </div>
+        </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">文章目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%b8%b8%e8%a7%81%e7%bc%96%e7%a0%81%e7%89%b9%e5%be%81" aria-label="常见编码特征">常见编码特征</a><ul>
+                            
+                    <li>
+                        <a href="#base%e5%ae%b6%e6%97%8f" aria-label="base家族">base家族</a><ul>
+                            
+                    <li>
+                        <a href="#1-base64%e7%a4%ba%e4%be%8bywrtaw4tcm9vda" aria-label="1. Base64——示例YWRtaW4tcm9vdA==">1. Base64——示例<code>YWRtaW4tcm9vdA==</code></a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e5%8e%9f%e7%90%86%e8%bd%ac%e5%8c%96%e4%b8%baascil%e7%a0%81---%e8%bd%ac%e5%8c%96%e4%b8%ba%e4%ba%8c%e8%bf%9b%e5%88%b6---8%e4%bd%8d%e5%8f%986%e4%bd%8d---6%e4%bd%8d%e8%a1%a5%e9%9b%b6--%e8%bd%ac%e5%8c%96%e4%b8%ba%e5%8d%81%e8%bf%9b%e5%88%b6----ascil%e7%a0%81%e5%af%b9%e7%85%a7" aria-label="原理：转化为ascil码&amp;mdash;转化为二进制&amp;mdash;8位变6位&amp;mdash;6位补零&amp;ndash;转化为十进制&amp;mdash;-ascil码对照">原理：转化为ascil码&mdash;转化为二进制&mdash;8位变6位&mdash;6位补零&ndash;转化为十进制&mdash;-ascil码对照</a></li></ul>
+                        
+                    <li>
+                        <a href="#base64%e4%b8%8eurl%e8%bd%ac%e5%8c%96%e9%97%ae%e9%a2%98" aria-label="base64与url转化问题">base64与url转化问题</a></li>
+                    <li>
+                        <a href="#base64%e8%bd%ac%e6%8d%a2%e5%90%8e%e6%af%94%e5%8e%9f%e6%9c%89%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%e9%95%bf13" aria-label="Base64转换后比原有的字符串长1/3">Base64转换后比原有的字符串长1/3</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#2-base58%e7%a4%ba%e4%be%8b6tmhczvhgfnjqu" aria-label="2. Base58——示例6tmHCZvhgfNjQu">2. Base58——示例<code>6tmHCZvhgfNjQu</code></a></li>
+                    <li>
+                        <a href="#3base32%e7%a4%ba%e4%be%8bgezdgnbvgy3tqojqge" aria-label="3.Base32——示例GEZDGNBVGY3TQOJQGE======">3.Base32——示例<code>GEZDGNBVGY3TQOJQGE======</code></a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e5%8e%9f%e7%90%86%e4%b8%8ebase64%e5%b7%ae%e4%b8%8d%e5%a4%9a%e5%b0%86%e5%8e%9f%e6%9d%a5%e7%9a%84%e4%ba%8c%e8%bf%9b%e5%88%b6%e5%88%86%e4%b8%ba5%e4%bd%8d%e7%84%b6%e5%90%8e%e9%ab%98%e4%bd%8d%e5%8a%a00%e5%8f%98%e6%88%908%e4%bd%8d%e5%a6%82%e6%9e%9c%e4%b8%8d%e6%98%af5%e5%92%8c8%e7%9a%84%e5%85%ac%e5%9b%a0%e6%95%b0%e5%b0%b1%e4%bc%9a%e8%a1%a5%e5%85%850" aria-label="原理：与base64差不多，将原来的二进制分为5位，然后高位加0变成8位。如果不是5和8的公因数就会补充0">原理：与base64差不多，将原来的二进制分为5位，然后高位加0变成8位。如果不是5和8的公因数就会补充0</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#4base16%e7%a4%ba%e4%be%8b61646d696e" aria-label="4.Base16——示例61646D696E">4.Base16——示例<code>61646D696E</code></a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e5%8e%9f%e7%90%86" aria-label="原理：">原理：</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#5base85%e7%a4%ba%e4%be%8baomghzsrh3qevneru2" aria-label="5.Base85——示例Ao(mgHZs%;@rH3q&#43;EVNE@ru=2">5.Base85——示例<code>Ao(mgHZs%;@rH3q+EVNE@ru=2</code></a></li>
+                    <li>
+                        <a href="#6base91%e7%a4%ba%e4%be%8biheg7g9jlrrhjh" aria-label="6.base91——示例@iH&amp;lt;,{)eG$7&amp;amp;G9jLrrh&#43;=[j;H">6.base91——示例<code>@iH&lt;,{)eG$7&amp;G9jLrrh+=[j;H</code></a></li>
+                    <li>
+                        <a href="#6base100%e7%a4%ba%e4%be%8b" aria-label="6.Base100——示例👘👛👤👠👥">6.Base100——示例<code>👘👛👤👠👥</code></a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%bf%9b%e5%88%b6" aria-label="进制">进制</a></li>
+                    <li>
+                        <a href="#url" aria-label="url">url</a></li>
+                    <li>
+                        <a href="#%e5%9b%be%e7%89%87%e7%a0%81" aria-label="图片码">图片码</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#wp" aria-label="wp">wp</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#1" aria-label="1">1</a></li>
+                    <li>
+                        <a href="#2" aria-label="2">2</a></li>
+                    <li>
+                        <a href="#3" aria-label="3">3</a></li>
+                    <li>
+                        <a href="#4" aria-label="4">4</a>
+                    </li>
+                </ul>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
         <div class="post-content"><p>​</p>
 <h2 id="常见编码特征">常见编码特征<a hidden class="anchor" aria-hidden="true" href="#常见编码特征">#</a></h2>
 <p>粘个链接：[30种常见编码]https://cloud.tencent.com/developer/article/1748394</p>

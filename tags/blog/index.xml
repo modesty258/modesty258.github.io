@@ -27,6 +27,15 @@
     
     <item>
       <title>如何生成一篇文章</title>
+      <link>https://modesty258.github.io/posts/blog/213123/</link>
+      <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/blog/213123/</guid>
+      <description>部署到github https://zz2summer.github.io/github-pages-hugo-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ 我是小垃圾 问题 大体步骤已经很清晰了 将文件放在public中，具体代码实现 hugo 这一步很重要创建public cd public 网站会将初始文件放在这个目录下 git init 初始化 git remote add origin git@github.com:username/username.github.io.git#关联git仓</description>
+    </item>
+    
+    <item>
+      <title>如何生成一篇文章</title>
       <link>https://modesty258.github.io/posts/blog/%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%96%87%E7%AB%A0/</link>
       <pubDate>Thu, 05 May 2022 00:18:23 +0800</pubDate>
       

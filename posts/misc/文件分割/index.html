@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
             <h1 class="post-title">
                 文件分割
             </h1>
-<div class="post-meta">
+            <div class="post-meta">
 
 <style>
     i[id*="post_meta_style"] {
@@ -313,57 +313,163 @@ var _hmt = _hmt || [];
         </span>
     </span>
 </span>
-
-    &nbsp;|&nbsp;标签: &nbsp;
-    <ul class="post-tags-meta">
-    </ul>
-
-    
-    
-    
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_page_pv">
-        &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-    </span>
-
-    
-    
-    
-    
-    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
-    </script>
-    <script>
-        let url = document.documentURI
-        
-        let dnsUrl = "https://modesty258.github.io/"
-        let urlSplit = url.split(dnsUrl)
-        let finalUrl = urlSplit[1]
-        if (finalUrl[0] !== '/') {
-            finalUrl = '/'+finalUrl
-        }
-        twikoo.getCommentsCount({
-            envId:  null ,
-            region:  null ,
-            urls: [
-                finalUrl,
-            ],
-            includeReply: false 
-        }).then(function (res) {
-            let count = res[0].count
-            const obj = document.getElementById("comment_count");
-            obj.innerText = count
-            
-            
-            
-        }).catch(function (err) {
-            
-            console.error(err);
-        });
-    </script>
-    &nbsp;| 评论: &nbsp; <span id="comment_count"></span>
+<span style="opacity: 0.8;">
+                    <span id="post_meta_style_7">
+                        &nbsp;&nbsp;
+                        <span class="fa fa-eye" ></span>
+                        <span>
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+                            &nbsp;&nbsp;
+                        </span>
+                    </span>
+                    <span id="post_meta_style_8">
+                        <span class="fa fa-commenting-o"></span>
+                        <span>
+                            <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js"></script>
+                            <script>
+                                let url = document.documentURI
+                                
+                                let dnsUrl = "https://modesty258.github.io/"
+                                let urlSplit = url.split(dnsUrl)
+                                let finalUrl = urlSplit[1]
+                                if (finalUrl[0] !== '/') {
+                                    finalUrl = '/'+finalUrl
+                                }
+                                twikoo.getCommentsCount({
+                                    envId:  null , 
+                                region:  null , 
+                                urls: [ 
+                                    
+                                    finalUrl,
+                                ],
+                                    includeReply: false 
+                                }).then(function (res) {
+                                    let count = res[0].count
+                                    const obj = document.getElementById("comment_count");
+                                    obj.innerText = count
+                                    
+                                    
+                                    
+                                }).catch(function (err) {
+                                    
+                                    console.error(err);
+                                });
+                            </script>
+                            <span id="comment_count"></span>
+                        </span>
+                    </span>
+                </span>
 
 </div>
+        </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">文章目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e6%96%87%e4%bb%b6%e5%88%86%e7%a6%bb%e5%b7%a5%e5%85%b7%e5%8f%8a%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" aria-label="文件分离工具及使用方法">文件分离工具及使用方法</a><ul>
+                            
+                    <li>
+                        <a href="#foremost" aria-label="foremost">foremost</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" aria-label="基本命令">基本命令</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#binwalk" aria-label="binwalk">binwalk</a></li>
+                    <li>
+                        <a href="#wp" aria-label="wp">wp</a></li>
+                    <li>
+                        <a href="#dd-%e5%8d%8a%e8%87%aa%e5%8a%a8%e5%8c%96%e5%88%86%e7%a6%bb" aria-label="dd 半自动化分离">dd 半自动化分离</a></li>
+                    <li>
+                        <a href="#zsteg" aria-label="zsteg">zsteg</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%9f%a5%e7%9c%8blsb%e6%95%b0%e6%8d%ae" aria-label="查看lsb数据">查看lsb数据</a></li>
+                    <li>
+                        <a href="#%e6%a3%80%e6%b5%8bzlib" aria-label="检测zlib">检测zlib</a></li>
+                    <li>
+                        <a href="#%e6%8f%90%e5%8f%96%e8%af%a5%e9%80%9a%e9%81%93%e5%9b%be%e7%89%87" aria-label="提取该通道图片">提取该通道图片</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%ba%94%e7%94%a8" aria-label="应用">应用</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
         <div class="post-content"><p>​</p>
 <h1 id="文件分离工具及使用方法">文件分离工具及使用方法<a hidden class="anchor" aria-hidden="true" href="#文件分离工具及使用方法">#</a></h1>
 <h2 id="foremost">foremost<a hidden class="anchor" aria-hidden="true" href="#foremost">#</a></h2>
@@ -385,7 +491,7 @@ var _hmt = _hmt || [];
 <p>第一个文件是一个图片，很简单，就是基本的一个隐写，直接用foremost分离了就出来了。</p>
 <p>flag{E0D6DEE1-33F0-42E1-9609-ECDFFFE5276C}</p>
 <h2 id="dd-半自动化分离">dd 半自动化分离<a hidden class="anchor" aria-hidden="true" href="#dd-半自动化分离">#</a></h2>
-<p><img loading="lazy" src="D:%5cdownload%5cimage.png" alt="image"  />
+<p><img loading="lazy" src="/img/11.png" alt=""  />
 </p>
 <h2 id="zsteg">zsteg<a hidden class="anchor" aria-hidden="true" href="#zsteg">#</a></h2>
 <p>可以检测png和bmp图片中的隐藏数据</p>
