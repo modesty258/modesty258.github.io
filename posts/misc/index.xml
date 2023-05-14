@@ -22,7 +22,7 @@
       <pubDate>Thu, 04 May 2023 21:06:52 +0800</pubDate>
       
       <guid>https://modesty258.github.io/posts/misc/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/</guid>
-      <description>图片隐写术 元数据隐写 隐藏在图片的属性中，一般直接属性查看，或者用命令 strings：打印可直接打印的字符，可以发现隐藏的压缩包注释内容或者解压密码 inentify：用于获取一个或多个图像文件的格式和特征，用于提取指定数据 png图片 文件格式：文件头固定，剩下的有数据块组成 文件头：8</description>
+      <description>师傅 [挺好的]http://www.ga1axy.top/index.php/archives/6/#0x01%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3 图片隐写术 元数据隐写 隐藏在图片的属性中，一般直接属性查看，或者用命令 strings：打印可直接打印</description>
     </item>
     
     <item>
