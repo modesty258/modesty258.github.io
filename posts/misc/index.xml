@@ -6,7 +6,16 @@
     <description>Recent content in 📚misc on Modest&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 07 May 2023 20:05:06 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/posts/misc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 May 2023 21:55:31 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/posts/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buuctf_wp</title>
+      <link>https://modesty258.github.io/posts/misc/buuctf_wp/</link>
+      <pubDate>Sun, 14 May 2023 21:55:31 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/misc/buuctf_wp/</guid>
+      <description>misc zip伪加密 题目已经说了是伪加密，所以打开了zipcenop直接修复，然后解压就可以了 命令 java -jar ZipCenOp.jar r lm.ziplm为文件名 lsb隐写 直接打开steg，然后勾选rgb发现，解码出来的是一个png图片的16进制，然后直接保存为png就可以了，这是一张二维码，直接扫描，结果就是fla</description>
+    </item>
+    
     <item>
       <title>Wp</title>
       <link>https://modesty258.github.io/posts/misc/wp/</link>

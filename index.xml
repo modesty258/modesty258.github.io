@@ -6,7 +6,25 @@
     <description>Recent content on Modest&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 May 2023 11:00:53 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 May 2023 17:19:33 +0800</lastBuildDate><atom:link href="https://modesty258.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>反序列化</title>
+      <link>https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</link>
+      <pubDate>Mon, 15 May 2023 17:19:33 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</guid>
+      <description>感谢陈腾师傅</description>
+    </item>
+    
+    <item>
+      <title>Buuctf_wp</title>
+      <link>https://modesty258.github.io/posts/misc/buuctf_wp/</link>
+      <pubDate>Sun, 14 May 2023 21:55:31 +0800</pubDate>
+      
+      <guid>https://modesty258.github.io/posts/misc/buuctf_wp/</guid>
+      <description>misc zip伪加密 题目已经说了是伪加密，所以打开了zipcenop直接修复，然后解压就可以了 命令 java -jar ZipCenOp.jar r lm.ziplm为文件名 lsb隐写 直接打开steg，然后勾选rgb发现，解码出来的是一个png图片的16进制，然后直接保存为png就可以了，这是一张二维码，直接扫描，结果就是fla</description>
+    </item>
+    
     <item>
       <title>基础语法</title>
       <link>https://modesty258.github.io/posts/python/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>

